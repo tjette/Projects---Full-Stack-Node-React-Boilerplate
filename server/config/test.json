@@ -1,0 +1,3 @@
+{
+  "DBHost": "mongodb://localhost/__DB_PROJECT__"
+}
