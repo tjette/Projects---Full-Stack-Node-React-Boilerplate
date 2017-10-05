@@ -2,24 +2,21 @@ import React from 'react'
 
 const styles = {
   footer: {
+    position: 'absolute',
     bottom: 0,
-    left: 0,
-    right: 0,
-    height: 40,
-    backgroundColor: 'gray',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingLeft: 20,
-    paddingRight: 20,
-    paddingTop: 5
+    width: '100%',
+    height: 60,
+    backgroundColor: 'gray'
+  },
+  footerTitle: {
+    textAlign: 'center'
   }
 }
 const Footer = () => {
   return (
     <div>
       <footer style={styles.footer}>
-        <h3>Thanks For Shopping!</h3>
+        <h3 style={styles.footerTitle}>Tech Job Site</h3>
       </footer>
     </div>
   )

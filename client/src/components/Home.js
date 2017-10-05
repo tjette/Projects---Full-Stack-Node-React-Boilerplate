@@ -1,6 +1,6 @@
 import React from 'react'
-import SignupPart1 from '../components/signup/SignupPart1'
-import SignupPart2 from '../components/signup/SignupPart2'
+import SignupPart1 from './signup/SignupPart1'
+import SignupPart2 from './signup/SignupPart2'
 
 const styles = {
   header: {

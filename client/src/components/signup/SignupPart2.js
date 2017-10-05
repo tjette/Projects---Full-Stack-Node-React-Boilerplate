@@ -10,6 +10,7 @@ import {InputLabel} from 'material-ui/Input'
 const SignupPart2 = () => {
   return (
     <div>
+      <h1>Signup Part 2</h1>
       <form>
         <TextField
           label='City'
