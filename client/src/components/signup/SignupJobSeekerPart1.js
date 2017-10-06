@@ -15,7 +15,7 @@ const styles = {
     flexDirection: 'column'
   }
 }
-const SignupPart1 = () => {
+const SignupJobSeekerPart1 = () => {
   return (
     <div>
       <h1 style={styles.header}>Job Seeker Signup Part 1</h1>
@@ -38,4 +38,4 @@ const SignupPart1 = () => {
   )
 }
 
-export default SignupPart1
+export default SignupJobSeekerPart1

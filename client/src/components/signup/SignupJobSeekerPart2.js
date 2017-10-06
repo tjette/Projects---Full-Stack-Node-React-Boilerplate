@@ -7,7 +7,7 @@ import Select from 'material-ui/Select'
 import {FormControl} from 'material-ui/Form'
 import {InputLabel} from 'material-ui/Input'
 
-const SignupPart2 = () => {
+const SignupJobSeekerPart2 = () => {
   return (
     <div>
       <h1>Signup Part 2</h1>
@@ -31,4 +31,4 @@ const SignupPart2 = () => {
   )
 }
 
-export default SignupPart2
+export default SignupJobSeekerPart2

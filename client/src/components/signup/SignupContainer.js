@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import {Link} from 'react-router-dom'
-import SignupPart1 from './SignupPart1'
+import {Link, Route, withRouter} from 'react-router-dom'
+import SignupJobSeekerPart1 from './SignupJobSeekerPart1'
 import SignupEmployerPart1 from './SignupEmployerPart1'
 
 const styles = {
@@ -21,52 +21,26 @@ const styles = {
 
 class SignupContainer extends Component {
 
-  state = {
-    employer: false,
-    jobSeeker: false
-  }
-  signUpAsEmployer = () => {
-    this.setState({employer: !this.state.employer})
-    this.setState({jobSeeker: false})
-  }
-  signUpAsJobSeeker = () => {
-    this.setState({jobSeeker: !this.state.jobSeeker})
-    this.setState({employer: false})
-  }
-
   render () {
     return (
       <div>
         <div style={styles.title}>
-          <h1>Tech Job Site</h1>
+          <h1>Signup For Tech Job Site</h1>
         </div>
         <div style={styles.header}>
           <div style={styles.headerTitle}>
-            <button onClick={this.signUpAsEmployer}>Employer</button>
+            <Link to='/signup/employer'>Employer</Link>
           </div>
           <div style={styles.headerTitle}>
-            <button onClick={this.signUpAsJobSeeker}>Job Seeker</button>
+            <Link to='/signup/job-seeker'>Job Seeker</Link>
           </div>
         </div>
-        {
-          this.state.jobSeeker ?
-            <SignupPart1
-              {...this.state}
-              signUpAsEmployer={this.signUpAsEmployer}
-            />
-            : null
-        }
-        {
-          this.state.employer ?
-            <SignupEmployerPart1
-              {...this.state}
-              signUpAsEmployer={this.signUpAsEmployer} />
-            : null
-        }
+        <Route path='/signup/job-seeker' component={SignupJobSeekerPart1} />
+        <Route path='/signup/employer' component={SignupEmployerPart1} />
 
       </div>
     )
   }
 }
 
-export default SignupContainer
+export default withRouter(SignupContainer)
