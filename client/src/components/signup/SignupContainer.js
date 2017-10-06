@@ -22,6 +22,7 @@ const styles = {
 class SignupContainer extends Component {
 
   render () {
+    const {match} = this.props
     return (
       <div>
         <div style={styles.title}>
@@ -29,14 +30,14 @@ class SignupContainer extends Component {
         </div>
         <div style={styles.header}>
           <div style={styles.headerTitle}>
-            <Link to='/signup/employer'>Employer</Link>
+            <Link to={`${match.path}/employer`}>Employer</Link>
           </div>
           <div style={styles.headerTitle}>
-            <Link to='/signup/job-seeker'>Job Seeker</Link>
+            <Link to={`${match.path}/job-seeker`}>Job Seeker</Link>
           </div>
         </div>
-        <Route path='/signup/job-seeker' component={SignupJobSeekerPart1} />
-        <Route path='/signup/employer' component={SignupEmployerPart1} />
+        <Route path={`${match.path}/job-seeker`} component={SignupJobSeekerPart1} />
+        <Route path={`${match.path}/employer`} component={SignupEmployerPart1} />
 
       </div>
     )
