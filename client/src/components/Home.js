@@ -11,8 +11,6 @@ const Home = () => {
   return (
     <div>
       <h1 style={styles.header}>Tech Job Site</h1>
-      <SignupPart1 />
-      <SignupPart2 />
     </div>
   )
 }
