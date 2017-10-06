@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Link, Route, withRouter} from 'react-router-dom'
+import {Route, withRouter} from 'react-router-dom'
 import SignupJobSeekerPart1 from './SignupJobSeekerPart1'
 import SignupEmployerPart1 from './SignupEmployerPart1'
 import SignupChooser from './SignupChooser'

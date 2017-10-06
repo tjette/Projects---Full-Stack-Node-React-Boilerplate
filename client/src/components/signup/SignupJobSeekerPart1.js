@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import TextField from 'material-ui/TextField'
 import PropTypes from 'prop-types'
 import Button from 'material-ui/Button'
@@ -34,6 +35,7 @@ const SignupJobSeekerPart1 = () => {
           label='Confirm Password'
         />
         <Button raised>Submit</Button>
+        <Link to='/signup'>Back To Signup</Link>
       </form>
     </div>
   )
