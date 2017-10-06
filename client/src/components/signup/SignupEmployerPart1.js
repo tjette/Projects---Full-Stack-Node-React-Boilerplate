@@ -4,9 +4,7 @@ import Button from 'material-ui/Button'
 
 const styles = {
   header: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center'
+    textAlign: 'center'
   },
   headerTitle: {
     border: '3px solid black'
@@ -14,7 +12,8 @@ const styles = {
   form: {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    flexDirection: 'column'
   },
   textFields: {
     display: 'flex'
@@ -26,7 +25,7 @@ class SignupEmployerPart1 extends Component {
   render () {
     return (
       <div>
-        <h1>Employer Signup Part 1</h1>
+        <h1 style={styles.header}>Employer Signup Part 1</h1>
         <form style={styles.form}>
           <TextField style={styles.textFields}
             label='Name'

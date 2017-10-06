@@ -3,11 +3,23 @@ import TextField from 'material-ui/TextField'
 import PropTypes from 'prop-types'
 import Button from 'material-ui/Button'
 
+const styles = {
+  header: {
+    textAlign: 'center'
+  },
+  form: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'column'
+  }
+}
 const SignupPart1 = () => {
   return (
     <div>
-      <h1>Job Seeker Signup Part 1</h1>
-      <form>
+      <h1 style={styles.header}>Job Seeker Signup Part 1</h1>
+      <form style={styles.form}>
         <TextField
           label='Name'
         />
