@@ -6,8 +6,8 @@ import Footer from './Footer'
 const Layout = (props) => {
   return (
     <div>
-      <Header userData={props.userData}/>
-      <Main userData={props.userData}/>
+      <Header userData={props.userData} />
+      <Main userData={props.userData} />
       <Footer userData={props.userData} />
     </div>
   )
