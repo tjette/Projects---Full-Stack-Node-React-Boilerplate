@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import {Route, withRouter} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import SignupJobSeekerPart1 from './SignupJobSeekerPart1'
+import SignupJobSeekerPart2 from './SignupJobSeekerPart2'
+import SignupJobSeekerPart3 from './SignupJobSeekerPart3'
 import SignupEmployerPart1 from './SignupEmployerPart1'
 import SignupChooser from './SignupChooser'
 
@@ -25,16 +27,15 @@ class SignupContainer extends Component {
   onEmailChanged = (event) => this.setState({email: event.target.value})
   onPasswordChanged = (event) => this.setState({password: event.target.value})
 
-  onSubmit = (event) => {
+  onSubmitJobSeekerPart1 = (event) => {
     event.preventDefault()
     this.props.userData.signUpUser(this.state)
     alert(`Welcome, ${this.state.firstName}`)
     console.log('on submit triggered')
-    this.props.history.push('/')
+    this.props.history.push('/signup/seekerpart2')
   }
 
   render () {
-    console.log(this.props)
     const {match} = this.props
 
     return (
@@ -47,7 +48,19 @@ class SignupContainer extends Component {
               onLastNameChanged={this.onLastNameChanged}
               onEmailChanged={this.onEmailChanged}
               onPasswordChanged={this.onPasswordChanged}
-              onSubmit={this.onSubmit}
+              onSubmitJobSeekerPart1={this.onSubmitJobSeekerPart1}
+            />} />
+        <Route exact path={`${match.path}/jobSeekerpart2`}
+          render={() =>
+            <SignupJobSeekerPart2
+              {...this.state}
+              onSubmitJobSeekerPart2={this.onSubmitJobSeekerPart2}
+            />} />
+        <Route exact path={`${match.path}/jobSeekerpart3`}
+          render={() =>
+            <SignupJobSeekerPart3
+              {...this.state}
+              onSubmitJobSeekerPart3={this.onSubmitJobSeekerPart3}
             />} />
         <Route path={`${match.path}/employer`} component={SignupEmployerPart1} />
         <Route exact path={match.path} component={SignupChooser} />

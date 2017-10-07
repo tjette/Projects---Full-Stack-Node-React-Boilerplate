@@ -5,7 +5,7 @@ import SignupContainer from '../components/signup/SignupContainer'
 import SignupEmployerPart1 from '../components/signup/SignupEmployerPart1'
 import LoginContainer from '../components/auth/LoginContainer'
 import Jobs from '../components/job/Jobs'
-import Profile from '../components/profile/Profile'
+import ProfileContainer from '../components/profile/ProfileContainer'
 
 const Main = (props) => {
   return (
@@ -15,7 +15,7 @@ const Main = (props) => {
       <Route path='/employerSignup' render={() => <SignupEmployerPart1 />} />
       <Route path='/login' render={() => <LoginContainer userData={props.userData} />} />
       <Route path='/jobs' render={() => <Jobs />} />
-      <Route path='/profile' render={() => <Profile />} />
+      <Route path='/profile' render={() => <ProfileContainer userData={props.userData} />} />
     </div>
   )
 }
