@@ -4,12 +4,11 @@ import Header from './header/Header'
 import Footer from './Footer'
 
 const Layout = (props) => {
-  console.log('UserProvider:', props.userData)
   return (
     <div>
-      <Header />
-      <Main />
-      <Footer />
+      <Header userData={props.userData}/>
+      <Main userData={props.userData}/>
+      <Footer userData={props.userData} />
     </div>
   )
 }

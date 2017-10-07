@@ -29,10 +29,16 @@ class SignupEmployerPart1 extends Component {
         <h1 style={styles.header}>Employer Signup Part 1</h1>
         <form style={styles.form}>
           <TextField style={styles.textFields}
-            label='Name'
+            label='First Name'
+          />
+          <TextField style={styles.textFields}
+            label='Last Name'
           />
           <TextField style={styles.textFields}
             label='Email'
+          />
+          <TextField style={styles.textFields}
+            label='Company'
           />
           <TextField style={styles.textFields}
             label='Password'
