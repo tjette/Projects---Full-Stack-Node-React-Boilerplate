@@ -41,4 +41,5 @@ const SignupChooser = ({match}) => {
 }
 
 SignupChooser.propTypes = propTypes
+
 export default withRouter(SignupChooser)
