@@ -3,7 +3,8 @@ import Main from './Main'
 import Header from './header/Header'
 import Footer from './Footer'
 
-const Layout = () => {
+const Layout = (props) => {
+  console.log('UserProvider:', props.userData)
   return (
     <div>
       <Header />

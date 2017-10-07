@@ -15,6 +15,7 @@ const styles = {
     flexDirection: 'column'
   }
 }
+
 const SignupJobSeekerPart1 = () => {
   return (
     <div>
