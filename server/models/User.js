@@ -2,9 +2,11 @@ const mongoose = require('mongoose')
 
 const UserSchema = new mongoose.Schema({
   local: {
-    name: String,
+    firstName: String,
+    lastName: String,
     email: String,
-    password: String
+    password: String,
+    isAdmin: Boolean
   }
 })
 

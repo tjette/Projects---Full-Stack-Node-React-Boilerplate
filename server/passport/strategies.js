@@ -42,7 +42,7 @@ module.exports = (passport) => {
           password: generateHash(password),
           firstName: body.firstName,
           lastName: body.lastName,
-          role: body.role
+          isAdmin: false
         }
       })
 
