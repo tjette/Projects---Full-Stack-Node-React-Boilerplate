@@ -13,7 +13,7 @@ const propTypes = {
   onLastNameChanged: PropTypes.func.isRequired,
   onEmailChanged: PropTypes.func.isRequired,
   onPasswordChanged: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired
+  onSubmitJobSeekerPart1: PropTypes.func.isRequired
 }
 
 const styles = {
@@ -33,7 +33,7 @@ const SignupJobSeekerPart1 = (props) => {
   return (
     <div>
       <h1 style={styles.header}>Job Seeker Signup Part 1</h1>
-      <form style={styles.form} onSubmit={props.onSubmit}>
+      <form style={styles.form} onSubmit={props.onSubmitJobSeekerPart1}>
         <TextField
           label='First Name'
           value={props.firstName}
