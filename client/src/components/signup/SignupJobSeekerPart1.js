@@ -26,6 +26,13 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'column'
+  },
+  button: {
+    margin: '10px'
+  },
+  link: {
+    textDecoration: 'none',
+    color: 'black'
   }
 }
 
@@ -54,8 +61,12 @@ const SignupJobSeekerPart1 = (props) => {
           value={props.password}
           onChange={props.onPasswordChanged}
         />
-        <Button type='submit' raised>Submit</Button>
-        <Link to='/signup'>Back To Signup</Link>
+        <div>
+          <Button style={styles.button} type='submit' raised></Button>
+          <Button style={styles.button} raised>
+            <Link style={styles.link} to='/signup'>Back To Signup</Link>
+          </Button>
+        </div>
       </form>
     </div>
   )

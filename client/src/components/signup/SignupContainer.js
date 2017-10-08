@@ -31,8 +31,8 @@ class SignupContainer extends Component {
     event.preventDefault()
     this.props.userData.signUpUser(this.state)
     alert(`Welcome, ${this.state.firstName}`)
-    console.log('on submit triggered')
-    this.props.history.push('/signup/seekerpart2')
+    console.log('on submit triggered', this.state)
+    this.props.history.push('/signup/job-seeker-part2')
   }
 
   render () {
@@ -50,13 +50,13 @@ class SignupContainer extends Component {
               onPasswordChanged={this.onPasswordChanged}
               onSubmitJobSeekerPart1={this.onSubmitJobSeekerPart1}
             />} />
-        <Route exact path={`${match.path}/jobSeekerpart2`}
+        <Route exact path={`${match.path}/job-seeker-part2`}
           render={() =>
             <SignupJobSeekerPart2
               {...this.state}
               onSubmitJobSeekerPart2={this.onSubmitJobSeekerPart2}
             />} />
-        <Route exact path={`${match.path}/jobSeekerpart3`}
+        <Route exact path={`${match.path}/job-seeker-part3`}
           render={() =>
             <SignupJobSeekerPart3
               {...this.state}
