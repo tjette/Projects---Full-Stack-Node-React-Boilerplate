@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 
 const defaultMainData = {
-  job: []
+  jobs: []
 }
 const withMainData = (BaseComponent) => class WithMainData extends Component {
   static contextTypes = {

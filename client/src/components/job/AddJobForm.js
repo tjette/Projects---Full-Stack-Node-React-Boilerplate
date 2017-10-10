@@ -13,12 +13,10 @@ const propTypes = {
   jobTitle: PropTypes.string.isRequired,
   jobDescription: PropTypes.string.isRequired,
   codeWarLevel: PropTypes.number.isRequired,
-  applyBy: PropTypes.string.isRequired,
   onCompanyChanged: PropTypes.func.isRequired,
   onJobTitleChanged: PropTypes.func.isRequired,
   onJobDescriptionChanged: PropTypes.func.isRequired,
   onCodewarLevelChanged: PropTypes.func.isRequired,
-  onApplyByChanged: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired
 }
 const styles = {
@@ -51,8 +49,6 @@ const AddJobForm = (props) => {
           label='Job Description' value={props.jobDescription} onChange={props.onJobDescriptionChanged} />
         <TextField
           label='Codewar Level' value={props.codeWarLevel} onChange={props.onCodewarLevelChanged} />
-        <TextField
-          label='Apply By' value={props.applyBy} onChange={props.onApplyByChanged} />
         <Button type='submit'>Submit Job</Button>
         <Link to='/'>Cancel</Link>
       </form>

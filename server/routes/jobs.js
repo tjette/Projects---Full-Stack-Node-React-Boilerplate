@@ -9,13 +9,16 @@ Router.route('/')
       if (err) {
         res.json({ message: err, data: null })
       } else {
-        res.json({ message: 'Successfully retrieved all products!', data: jobs })
+        res.json({ message: 'Successfully retrieved all jobs!', data: jobs })
       }
     })
   })
   .post((req, res) => {
     const job = new Job()
+    job.loadData(req.body)
     job.save((err, savedJob) => {
+      console.log(err)
+      console.log(savedJob)
       if (err) {
         res.json({ message: err, data: null })
       } else {
