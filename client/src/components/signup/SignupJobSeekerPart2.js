@@ -2,11 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import TextField from 'material-ui/TextField'
 import PropTypes from 'prop-types'
-import MenuItem from 'material-ui/Menu/MenuItem'
 import Button from 'material-ui/Button'
-import Select from 'material-ui/Select'
-import {FormControl} from 'material-ui/Form'
-import {InputLabel} from 'material-ui/Input'
 
 const styles = {
   header: {

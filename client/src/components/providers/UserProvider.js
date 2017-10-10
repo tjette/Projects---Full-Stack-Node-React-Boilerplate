@@ -1,10 +1,13 @@
 import React, {Component} from 'react'
-import * as ServerApi from '../lib/serverApi'
+import * as ServerApi from '../../lib/serverApi'
 import PropTypes from 'prop-types'
 
 class UserProvider extends Component {
   static propTypes = {
     children: PropTypes.element.isRequired
+  }
+  static childContextTypes = {
+    userData: PropTypes.object.isRequired
   }
 
   state = {
@@ -27,9 +30,11 @@ class UserProvider extends Component {
           return loggedInUser
         }),
 
-    logoutUser: () =>
+    logoutUser: () => {
+      console.log('logoutUser triggered')
       ServerApi.logoutUser()
         .then(() => this.setState({ user: null }))
+      }
   }
 
   componentDidMount () {
@@ -40,16 +45,21 @@ class UserProvider extends Component {
         }))
   }
 
-  render () {
-    const userData = {
-      ...this.state,
-      ...this.methods,
-      loggedIn: this.state.user != null,
-      loggedOut: this.state.user == null
+  getChildContext () {
+    console.log('in get child context')
+    return {
+      userData: {
+        ...this.state,
+        ...this.methods,
+        loggedIn: this.state.user != null,
+        loggedOut: this.state.user == null
+      }
     }
-    return React.cloneElement(this.props.children, {userData})
   }
-
+  render () {
+    console.log('in render')
+    return this.props.children
+  }
 }
 
 export default UserProvider

@@ -1,6 +1,7 @@
 import React from 'react'
 import NavItem from './NavItem'
 import PropTypes from 'prop-types'
+import withUserData from '../../components/providers/withUserData'
 
 const propTypes = {
   userData: PropTypes.object.isRequired
@@ -21,13 +22,14 @@ const styles = {
 }
 
 const Header = (props) => {
+  console.log(props)
   return (
     <header>
       <nav style={styles.header}>
         <NavItem to='/'>Home</NavItem>
         <NavItem to='/about'>About</NavItem>
         <NavItem to='/jobs'>Jobs</NavItem>
-        { !props.userData.user ? <NavItem to='/signup'>Sign Up</NavItem> : <NavItem to='/' onClick={() => props.userData.logoutUser()}>Log Out</NavItem> }
+        { !props.userData.user ? <NavItem to='/signup'>Sign Up</NavItem> : <a onClick={props.userData.logoutUser}>Log Out</a> }
         { props.userData.user ? <NavItem to='/profile'>Profile</NavItem>
           : <NavItem to='/login'>Login</NavItem>
         }
@@ -37,4 +39,4 @@ const Header = (props) => {
 }
 Header.propTypes = propTypes
 
-export default Header
+export default withUserData(Header)

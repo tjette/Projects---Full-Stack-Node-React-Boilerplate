@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {Route, withRouter} from 'react-router-dom'
+import withUserData from '../../components/providers/withUserData'
 import PropTypes from 'prop-types'
 import SignupJobSeekerPart1 from './SignupJobSeekerPart1'
 import SignupJobSeekerPart2 from './SignupJobSeekerPart2'
@@ -8,7 +9,6 @@ import SignupEmployerPart1 from './SignupEmployerPart1'
 import SignupChooser from './SignupChooser'
 
 class SignupContainer extends Component {
-
   static propTypes = {
     userData: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
@@ -19,12 +19,15 @@ class SignupContainer extends Component {
     firstName: '',
     lastName: '',
     email: '',
-    password: ''
+    password: '',
+    jobSeeker: false,
+    employer: false
   }
 
   onFirstNameChanged = (event) => this.setState({firstName: event.target.value})
   onLastNameChanged = (event) => this.setState({lastName: event.target.value})
   onEmailChanged = (event) => this.setState({email: event.target.value})
+  onCompanyChanged = (event) => this.setState({company: event.target.value})
   onPasswordChanged = (event) => this.setState({password: event.target.value})
 
   onSubmitJobSeekerPart1 = (event) => {
@@ -32,7 +35,16 @@ class SignupContainer extends Component {
     this.props.userData.signUpUser(this.state)
     alert(`Welcome, ${this.state.firstName}`)
     console.log('on submit triggered')
+    this.setState({jobSeeker: true})
     this.props.history.push('/signup/seekerpart2')
+  }
+  onSubmitEmployerPart1 = (event) => {
+    event.preventDefault()
+    this.props.userData.signUpUser(this.state)
+    alert(`Welcome, ${this.state.firstName}`)
+    console.log('on submit triggered')
+    this.setState({employer: true})
+    this.props.history.push('jobs/add')
   }
 
   render () {
@@ -62,11 +74,21 @@ class SignupContainer extends Component {
               {...this.state}
               onSubmitJobSeekerPart3={this.onSubmitJobSeekerPart3}
             />} />
-        <Route path={`${match.path}/employer`} component={SignupEmployerPart1} />
+        <Route path={`${match.path}/employer`}
+          render={() =>
+            <SignupEmployerPart1
+              {...this.state}
+              onFirstNameChanged={this.onFirstNameChanged}
+              onLastNameChanged={this.onLastNameChanged}
+              onEmailChanged={this.onEmailChanged}
+              onCompanyChanged={this.onCompanyChanged}
+              onPasswordChanged={this.onPasswordChanged}
+              onSubmitJobSeekerPart1={this.onSubmitJobSeekerPart1}
+            />} />
         <Route exact path={match.path} component={SignupChooser} />
       </div>
     )
   }
 }
 
-export default withRouter(SignupContainer)
+export default withRouter(withUserData(SignupContainer))

@@ -1,12 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import TextField from 'material-ui/TextField'
-import PropTypes from 'prop-types'
-import MenuItem from 'material-ui/Menu/MenuItem'
 import Button from 'material-ui/Button'
-import Select from 'material-ui/Select'
-import {FormControl} from 'material-ui/Form'
-import {InputLabel} from 'material-ui/Input'
 
 const styles = {
   header: {
@@ -33,6 +28,7 @@ const SignupJobSeekerPart3 = () => {
         <Button style={styles.button} raised>Submit</Button>
         <Button><Link to='/signup/jobSeekerpart2'>Go Back To Part 2</Link></Button>
         <Button><Link to='/'>Skip resume upload. Finish Signup Process</Link></Button>
+        <Button><Link to='/'>Cancel Signup</Link></Button>
       </form>
     </div>
   )

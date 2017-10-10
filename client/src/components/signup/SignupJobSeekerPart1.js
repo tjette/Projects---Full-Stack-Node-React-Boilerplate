@@ -54,7 +54,8 @@ const SignupJobSeekerPart1 = (props) => {
           value={props.password}
           onChange={props.onPasswordChanged}
         />
-        <Button type='submit' raised>Submit</Button>
+        <Button raised type='submit'
+          disabled={!props.firstName || !props.lastName || !props.email || !props.password}>Submit</Button>
         <Link to='/signup'>Back To Signup</Link>
       </form>
     </div>
