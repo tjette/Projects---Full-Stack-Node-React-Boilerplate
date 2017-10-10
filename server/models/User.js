@@ -11,9 +11,11 @@ const UserSchema = new mongoose.Schema({
 })
 
 UserSchema.methods.loadData = function (data) {
-  this.name = data.name || this.name
+  this.firstName = data.firstName || this.firstName
+  this.lastName = data.lastName || this.lastName
+  this.email = data.email || this.email
   this.password = data.password || this.password
-  this.address = data.address || this.address
+  this.isAdmin = false
 }
 
 UserSchema.methods.setMetaDates = function () {
