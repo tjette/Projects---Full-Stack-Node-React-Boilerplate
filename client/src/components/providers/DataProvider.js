@@ -6,6 +6,9 @@ class DataProvider extends Component {
   static propTypes = {
     children: PropTypes.element.isRequired
   }
+  static childContextTypes = {
+    mainData: PropTypes.object.isRequired
+  }
 
   state = {
     jobs: []
@@ -55,7 +58,9 @@ class DataProvider extends Component {
   }
 
   render () {
-    return this.props.children
+    return (
+      this.props.children
+    )
   }
 }
 

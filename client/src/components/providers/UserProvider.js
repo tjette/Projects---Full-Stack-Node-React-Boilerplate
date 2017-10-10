@@ -34,7 +34,7 @@ class UserProvider extends Component {
       console.log('logoutUser triggered')
       ServerApi.logoutUser()
         .then(() => this.setState({ user: null }))
-      }
+    }
   }
 
   componentDidMount () {
