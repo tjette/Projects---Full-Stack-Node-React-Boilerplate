@@ -8,15 +8,13 @@ class AddJobContainer extends Component {
     companyName: 'test',
     jobTitle: 'test',
     jobDescription: 'test',
-    codeWarLevel: 2,
-    applyBy: new Date().toString()
+    codeWarLevel: 2
   }
 
   onCompanyChanged = (event) => this.setState({companyName: event.target.value})
   onJobTitleChanged = (event) => this.setState({jobTitle: event.target.value})
   onJobDescriptionChanged = (event) => this.setState({jobDescription: event.target.value})
   onCodewarLevelChanged = (event) => this.setState({codeWarLevel: event.target.value})
-  onApplyByChanged = (event) => this.setState({applyBy: event.target.value})
 
   onSubmit = (event) => {
     event.preventDefault()
@@ -33,7 +31,6 @@ class AddJobContainer extends Component {
           onJobTitleChanged={this.onJobTitleChanged}
           onJobDescriptionChanged={this.onJobDescriptionChanged}
           onCodewarLevelChanged={this.onCodewarLevelChanged}
-          onApplyByChanged={this.onApplyByChanged}
           onSubmit={this.onSubmit}
         />
       </div>
