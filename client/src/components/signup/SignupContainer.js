@@ -36,7 +36,7 @@ class SignupContainer extends Component {
     alert(`Welcome, ${this.state.firstName}`)
     console.log('on submit triggered')
     this.setState({jobSeeker: true})
-    this.props.history.push('/signup/seekerpart2')
+    this.props.history.push('/signup/jobSeekerpart2')
   }
   onSubmitEmployerPart1 = (event) => {
     event.preventDefault()

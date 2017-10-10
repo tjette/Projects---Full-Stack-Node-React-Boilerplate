@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import injectSheet from 'react-jss'
+import withUserData from '../../components/providers/withUserData'
 
 const propTypes = {
 
@@ -30,12 +31,12 @@ const JobCard = (props) => {
       <h3>{props.job.jobTitle}</h3>
       <p>{props.job.jobDescription}</p>
 
-      { props.isAdmin && props.loggedIn ? <button onClick={props.onDelete}>Delete Product</button> : null }
-      { props.isAdmin && props.loggedIn ? <button onClick={props.onEdit}>Edit</button> : null }
+      { props.userData.user.local.isAdmin && props.userData.loggedIn ? <button onClick={props.onDelete}>Delete Product</button> : null }
+      { props.userData.user.local.isAdmin && props.userData.loggedIn ? <button onClick={props.onEdit}>Edit</button> : null }
     </div>
   )
 }
 
 JobCard.propTypes = propTypes
 
-export default enhancer(JobCard)
+export default enhancer(withUserData(JobCard))
