@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import LoginForm from './LoginForm'
 import {withRouter} from 'react-router-dom'
+import withUserData from '../providers/withUserData'
 
 class LoginContainer extends Component {
   static propTypes = {
@@ -37,4 +38,4 @@ class LoginContainer extends Component {
   }
 }
 
-export default withRouter(LoginContainer)
+export default withRouter(withUserData(LoginContainer))

@@ -7,15 +7,20 @@ import LoginContainer from '../components/auth/LoginContainer'
 import Jobs from '../components/job/Jobs'
 import ProfileContainer from '../components/profile/ProfileContainer'
 
+const styles = {
+  main: {
+    overflow: 'scroll'
+  }
+}
 const Main = (props) => {
   return (
-    <div>
+    <div style={styles.main}>
       <Route path='/' exact component={Home} />
-      <Route path='/signup' render={() => <SignupContainer userData={props.userData} />} />
+      <Route path='/signup' render={() => <SignupContainer />} />
       <Route path='/employerSignup' render={() => <SignupEmployerPart1 />} />
-      <Route path='/login' render={() => <LoginContainer userData={props.userData} />} />
+      <Route path='/login' render={() => <LoginContainer />} />
       <Route path='/jobs' render={() => <Jobs />} />
-      <Route path='/profile' render={() => <ProfileContainer userData={props.userData} />} />
+      <Route path='/profile' render={() => <ProfileContainer />} />
     </div>
   )
 }
