@@ -7,7 +7,9 @@ import DataProvider from './components/providers/DataProvider'
 const App = () =>
   <BrowserRouter>
     <UserProvider>
+      <DataProvider>
         <Layout />
+      </DataProvider>
     </UserProvider>
   </BrowserRouter>
 

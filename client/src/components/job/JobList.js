@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import JobCard from './JobCard'
+import withMainData from '../../components/providers/withMainData'
 
 const JobList = (props) => {
   return (
@@ -10,12 +11,12 @@ const JobList = (props) => {
       <div>
 
         {
-          props.jobData.jobs.length > 0
-            ? props.jobData.jobs.map(job =>
+          props.mainData.jobs.length > 0
+            ? props.mainData.jobs.map(job =>
               <JobCard
                 key={job._id}
                 job={job}
-                onDelete={() => props.jobData.deleteJob(job._id)}
+                onDelete={() => props.mainData.deleteJob(job._id)}
                 onEdit={() => props.history.push(`/jobs/edit/${job._id}`)}
               />
             )
@@ -26,4 +27,4 @@ const JobList = (props) => {
   )
 }
 
-export default JobList
+export default withMainData(JobList)
