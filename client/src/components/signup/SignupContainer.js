@@ -31,20 +31,29 @@ class SignupContainer extends Component {
   onPasswordChanged = (event) => this.setState({password: event.target.value})
 
   onSubmitJobSeekerPart1 = (event) => {
+    console.log('Hi')
     event.preventDefault()
     this.props.userData.signUpUser(this.state)
-    alert(`Welcome, ${this.state.firstName}`)
-    console.log('on submit triggered')
-    this.setState({jobSeeker: true})
-    this.props.history.push('/signup/jobSeekerpart2')
+      .then(() => {
+        alert(`Welcome, ${this.state.firstName}`)
+        console.log('on submit triggered')
+        this.setState({jobSeeker: true})
+        this.props.history.push('/signup/job-seeker-part2')
+      })
+      .catch((error) => {
+        alert(error)
+      })
   }
+
   onSubmitEmployerPart1 = (event) => {
     event.preventDefault()
     this.props.userData.signUpUser(this.state)
-    alert(`Welcome, ${this.state.firstName}`)
-    console.log('on submit triggered')
-    this.setState({employer: true})
-    this.props.history.push('jobs/add')
+      .then(() => {
+        alert(`Welcome, ${this.state.firstName}`)
+        console.log('on submit triggered')
+        this.setState({employer: true})
+        this.props.history.push('jobs/add')
+      })
   }
 
   render () {

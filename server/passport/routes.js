@@ -2,6 +2,7 @@ const Errors = require('./errors')
 
 module.exports = (app, passport) => {
   app.post('/api/signup', (req, res, next) => {
+    console.log('Made it to app')
     passport.authenticate('local-signup', (err, user, info) => {
       if (err) {
         return next(err)
