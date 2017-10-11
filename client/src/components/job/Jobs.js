@@ -13,10 +13,8 @@ const Jobs = (props) => {
         render={(routeProps) => <AddJobContainer history={routeProps.history} />} />
       <Route
         path='/jobs/edit/:jobId'
-        render={(routeProps) =>
+        render={() =>
           <EditJobContainer
-            history={routeProps.history}
-            match={routeProps.match}
           />}
       />
     </div>

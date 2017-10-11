@@ -14,4 +14,10 @@ JobSchema.methods.loadData = function (data) {
   this.codeWarLevel = data.codeWarLevel || this.codeWarLevel
 }
 
+JobSchema.methods.setMetaDates = function () {
+  const newDate = new Date()
+  this.created = this.created || newDate
+  this.modified = newDate
+}
+
 module.exports = mongoose.model('Job', JobSchema)

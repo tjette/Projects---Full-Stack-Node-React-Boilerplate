@@ -27,4 +27,37 @@ Router.route('/')
     })
   })
 
+Router.route('/:job_id')
+  .get((req, res) => {
+    Job.findById(req.params.job_id, (err, job) => {
+      if (err) {
+        res.json({ message: err, data: null })
+      } else {
+        res.json({ message: `Successfully updated job: ${job.jobTitle}`, data: job })
+      }
+    })
+  })
+  .put((req, res) => {
+    Job.findById(req.params.job_id, (err, job) => {
+      job.loadData(req.body)
+      console.log('PUTTING PRODUCT', job)
+      job.save((err, savedJob) => {
+        if (err) {
+          res.json({ message: err, data: null })
+        } else {
+          res.json({ message: `Successfully updated job: ${job.jobTitle}`, data: savedJob })
+        }
+      })
+    })
+  })
+  .delete((req, res) => {
+    Job.remove({ _id: req.params.job_id }, (err) => {
+      if (err) {
+        res.json({ message: err, data: null })
+      } else {
+        res.json({ message: 'Product successfully deleted.', data: {} })
+      }
+    })
+})
+
 module.exports = Router

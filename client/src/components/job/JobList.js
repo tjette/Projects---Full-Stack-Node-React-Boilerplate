@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 import JobCard from './JobCard'
 import withMainData from '../../components/providers/withMainData'
 
@@ -27,4 +27,4 @@ const JobList = (props) => {
   )
 }
 
-export default withMainData(JobList)
+export default withRouter(withMainData(JobList))
