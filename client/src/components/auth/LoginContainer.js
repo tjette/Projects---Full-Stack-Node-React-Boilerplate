@@ -23,7 +23,7 @@ class LoginContainer extends Component {
     this.props.userData.loginUser(this.state.email, this.state.password)
       .then((user) => {
         this.props.history.push('/')
-        alert(`You are logged in ${user.local.email}`)
+        alert(`You are logged in ${user.local.firstName}`)
       })
   }
   render () {

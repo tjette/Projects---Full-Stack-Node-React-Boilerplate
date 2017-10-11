@@ -40,7 +40,7 @@ const JobCard = (props) => {
           image='https://images.unsplash.com/1/macbook-air-all-faded-and-stuff.jpg?dpr=1&auto=compress,format&fit=crop&w=376&h=251&q=80&cs=tinysrgb&crop='
         />
         <CardContent className={props.classes.jobContent}>
-          <Typography type="body1" className=''>
+          <Typography type="headline" className=''>
             Job Title:{props.job.jobTitle}
           </Typography>
           <Typography type="body1" className=''>
@@ -53,8 +53,8 @@ const JobCard = (props) => {
             Codewar Level Required:{props.job.codeWarLevel}
           </Typography>
         <CardActions>
-          { props.userData.user.local.isAdmin && props.userData.loggedIn ? <Button onClick={props.onDelete}>Delete Product</Button> : null }
-          { props.userData.user.local.isAdmin && props.userData.loggedIn ? <Button onClick={props.onEdit}>Edit</Button> : null }
+          { props.userData.user.local.isAdmin && props.userData.loggedIn ? <Button dense color='primary' onClick={props.onDelete}>Delete Product</Button> : null }
+          { props.userData.user.local.isAdmin && props.userData.loggedIn ? <Button dnese color='primary' onClick={props.onEdit}>Edit</Button> : null }
         </CardActions>
         </CardContent>
       </Card>
