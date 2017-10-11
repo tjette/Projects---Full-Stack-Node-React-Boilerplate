@@ -6,6 +6,9 @@ import { withStyles } from 'material-ui/styles'
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card'
 import Button from 'material-ui/Button'
 import Typography from 'material-ui/Typography'
+import FavoriteIcon from 'material-ui-icons/Favorite'
+import IconButton from 'material-ui/IconButton'
+import ExpandMoreIcon from 'material-ui-icons/ExpandMore'
 
 const propTypes = {
 
@@ -57,6 +60,9 @@ const JobCard = (props) => {
           { props.userData.user.local.isAdmin && props.userData.loggedIn ? <Button dnese color='primary' onClick={props.onEdit}>Edit</Button> : null }
         </CardActions>
         </CardContent>
+        <IconButton>
+          <FavoriteIcon />
+        </IconButton>
       </Card>
     </div>
   )
