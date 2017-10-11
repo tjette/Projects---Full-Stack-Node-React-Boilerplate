@@ -6,6 +6,7 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 
 const jobRoutes = require('./routes/jobs')
+const userRoutes = require('./routes/users')
 
 const app = express()
 const port = 3001
@@ -27,6 +28,7 @@ require('./passport/strategies')(passport) // pass passport for configuration
 require('./passport/routes')(app, passport) // load our routes and pass in our app and fully configured passport
 
 app.use('/api/jobs', jobRoutes)
+app.use('/api/users', userRoutes)
 
 app.use(require('./config/error-handler'))
 

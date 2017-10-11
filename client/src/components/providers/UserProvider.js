@@ -30,19 +30,35 @@ class UserProvider extends Component {
           return loggedInUser
         }),
 
-    logoutUser: () => {
-      console.log('logoutUser triggered')
+    logoutUser: () =>
       ServerApi.logoutUser()
-        .then(() => this.setState({ user: null }))
-    }
+        .then(() => this.setState({ user: null })),
+
+    saveCodeWarsInfo: (info) =>
+      ServerApi.saveCodeWarsInfo(this.state.user, info)
+        .then(() => this.methods.getUser()),
+
+    getUser: () =>
+      ServerApi.getUser()
+        .then(user => {
+          this.setState({
+            user: user
+          })
+          if (user) {
+            this.methods.fetchCodeWarsProfile()
+          }
+        }),
+
+    fetchCodeWarsProfile: () =>
+      ServerApi.fetchCodeWarsProfile(this.state.user)
+        .then(profile =>
+          this.setState({
+            profile: profile
+          }))
   }
 
   componentDidMount () {
-    ServerApi.getUser()
-      .then(user =>
-        this.setState({
-          user: user
-        }))
+    this.methods.getUser()
   }
 
   getChildContext () {

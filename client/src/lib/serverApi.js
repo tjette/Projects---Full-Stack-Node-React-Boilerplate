@@ -1,16 +1,18 @@
-const ajaxRequest = (uri, method, body) => {
-  const headers = new Headers({
-    'Content-Type': 'application/json'
+const ajaxRequest = ({url, method, body, headers = {}}) => {
+
+  const requestHeaders = new Headers({
+    'Content-Type': 'application/json',
+    ...headers
   })
 
   const options = {
-    headers: headers,
+    headers: requestHeaders,
     method: method,
     body: JSON.stringify(body),
     credentials: 'include'
   }
 
-  return fetch(`/api/${uri}`, options)
+  return fetch(url, options)
     .then(handleErrors)
     .then(response => response.json())
     .then(json => json.data)
@@ -29,18 +31,29 @@ const handleErrors = response => {
   return response
 }
 
-export const getAllJobs = () => ajaxRequest('jobs', 'GET')
+export const getAllJobs = () => ajaxRequest({url: '/api/jobs', method: 'GET'})
 
-export const addJob = (newJob) => ajaxRequest('jobs', 'POST', newJob)
+export const addJob = (newJob) => ajaxRequest({url: '/api/jobs', method: 'POST', body: newJob})
 
-export const deleteJob = (jobId) => ajaxRequest(`jobs/${jobId}`, 'DELETE')
+export const deleteJob = (jobId) => ajaxRequest({url: `/api/jobs/${jobId}`, method: 'DELETE'})
 
-export const updateJob = (job) => ajaxRequest(`jobs/${job._id}`, 'PUT', job)
+export const updateJob = (job) => ajaxRequest({url: `/api/jobs/${job._id}`, method: 'PUT', body: job})
 
-export const signUpUser = (user) => ajaxRequest('signup', 'POST', user)
+export const signUpUser = (user) => ajaxRequest({url: '/api/signup', method: 'POST', body: user})
 
-export const loginUser = (email, password) => ajaxRequest('login', 'POST', {email, password})
+export const loginUser = (email, password) => ajaxRequest({url: '/api/login', method: 'POST', body: {email, password}})
 
-export const logoutUser = () => ajaxRequest('logout', 'GET')
+export const logoutUser = () => ajaxRequest({url: '/api/logout', method: 'GET'})
 
-export const getUser = () => ajaxRequest('get_user', 'GET')
+export const getUser = () => ajaxRequest({url: '/api/get_user', method: 'GET'})
+
+export const saveCodeWarsInfo = (user, codeWarsInfo) => ajaxRequest({url: `/api/users/${user._id}`, method: 'PUT', body: codeWarsInfo})
+
+export const fetchCodeWarsProfile = (user) =>
+  ajaxRequest({
+    url: `https://www.codewars.com/api/v1/users/${user.local.codeWarsUserName}`,
+    method: 'GET',
+    headers: {
+      Authorization: user.local.codeWarsToken
+    }
+  })

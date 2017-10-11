@@ -16,28 +16,71 @@ class SignupContainer extends Component {
   }
 
   state = {
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-    jobSeeker: false,
-    employer: false
+    part1: {
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+      isEmployer: false
+    },
+    part2: {
+      codeWarsToken: '',
+      codeWarsUserName: ''
+    }
   }
 
-  onFirstNameChanged = (event) => this.setState({firstName: event.target.value})
-  onLastNameChanged = (event) => this.setState({lastName: event.target.value})
-  onEmailChanged = (event) => this.setState({email: event.target.value})
-  onCompanyChanged = (event) => this.setState({company: event.target.value})
-  onPasswordChanged = (event) => this.setState({password: event.target.value})
+  onFirstNameChanged = (event) => this.setState({
+    part1: {
+      ...this.state.part1,
+      firstName: event.target.value
+    }
+  })
 
+  onLastNameChanged = (event) => this.setState({
+    part1: {
+      ...this.state.part1,
+      lastName: event.target.value
+    }
+  })
+
+  onEmailChanged = (event) => this.setState({
+    part1: {
+      ...this.state.part1,
+      email: event.target.value
+    }
+  })
+  onCompanyChanged = (event) => this.setState({
+    part1: {
+      ...this.state.part1,
+      company: event.target.value
+    }
+  })
+  onPasswordChanged = (event) => this.setState({
+    part1: {
+      ...this.state.part1,
+      password: event.target.value
+    }
+  })
+  onCodeWarsTokenChanged = (event) => this.setState({
+    part2: {
+      ...this.state.part2,
+      codeWarsToken: event.target.value
+    }
+  })
+
+  onCodeWarsUserNameChanged = (event) => this.setState({
+    part2: {
+      ...this.state.part2,
+      codeWarsUserName: event.target.value
+    }
+  })
   onSubmitJobSeekerPart1 = (event) => {
     console.log('Hi')
     event.preventDefault()
-    this.props.userData.signUpUser(this.state)
+    this.props.userData.signUpUser(this.state.part1)
       .then(() => {
-        alert(`Welcome, ${this.state.firstName}`)
+        alert(`Welcome, ${this.state.part1.firstName}`)
         console.log('on submit triggered')
-        this.setState({jobSeeker: true})
         this.props.history.push('/signup/job-seeker-part2')
       })
       .catch((error) => {
@@ -45,9 +88,21 @@ class SignupContainer extends Component {
       })
   }
 
+  onSubmitJobSeekerPart2 = (event) => {
+    event.preventDefault()
+    this.props.userData.saveCodeWarsInfo(this.state.part2)
+      .then(() => {
+        console.log('savedCodeWarsInfo method fired')
+        this.props.history.push('/signup/job-seeker-part3')
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
+
   onSubmitEmployerPart1 = (event) => {
     event.preventDefault()
-    this.props.userData.signUpUser(this.state)
+    this.props.userData.signUpUser(this.state.part1)
       .then(() => {
         alert(`Welcome, ${this.state.firstName}`)
         console.log('on submit triggered')
@@ -64,7 +119,7 @@ class SignupContainer extends Component {
         <Route path={`${match.path}/job-seeker`}
           render={() =>
             <SignupJobSeekerPart1
-              {...this.state}
+              {...this.state.part1}
               onFirstNameChanged={this.onFirstNameChanged}
               onLastNameChanged={this.onLastNameChanged}
               onEmailChanged={this.onEmailChanged}
@@ -74,8 +129,10 @@ class SignupContainer extends Component {
         <Route exact path={`${match.path}/job-seeker-part2`}
           render={() =>
             <SignupJobSeekerPart2
-              {...this.state}
+              {...this.state.part2}
               onSubmitJobSeekerPart2={this.onSubmitJobSeekerPart2}
+              onCodeWarsTokenChanged={this.onCodeWarsTokenChanged}
+              onCodeWarsUserNameChanged={this.onCodeWarsUserNameChanged}
             />} />
         <Route exact path={`${match.path}/job-seeker-part3`}
           render={() =>

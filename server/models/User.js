@@ -6,17 +6,11 @@ const UserSchema = new mongoose.Schema({
     lastName: String,
     email: String,
     password: String,
-    isAdmin: Boolean
+    isAdmin: Boolean,
+    codeWarsToken: String,
+    codeWarsUserName: String
   }
 })
-
-UserSchema.methods.loadData = function (data) {
-  this.firstName = data.firstName || this.firstName
-  this.lastName = data.lastName || this.lastName
-  this.email = data.email || this.email
-  this.password = data.password || this.password
-  this.isAdmin = false
-}
 
 UserSchema.methods.setMetaDates = function () {
   const newDate = new Date()
