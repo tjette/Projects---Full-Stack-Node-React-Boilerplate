@@ -62,13 +62,13 @@ class SignupContainer extends Component {
               onPasswordChanged={this.onPasswordChanged}
               onSubmitJobSeekerPart1={this.onSubmitJobSeekerPart1}
             />} />
-        <Route exact path={`${match.path}/jobSeekerpart2`}
+        <Route exact path={`${match.path}/job-seeker-part2`}
           render={() =>
             <SignupJobSeekerPart2
               {...this.state}
               onSubmitJobSeekerPart2={this.onSubmitJobSeekerPart2}
             />} />
-        <Route exact path={`${match.path}/jobSeekerpart3`}
+        <Route exact path={`${match.path}/job-seeker-part3`}
           render={() =>
             <SignupJobSeekerPart3
               {...this.state}

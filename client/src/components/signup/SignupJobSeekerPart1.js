@@ -26,6 +26,20 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'column'
+  },
+  link: {
+    textDecoration: 'none',
+    color: 'black',
+    textTransform: 'uppercase',
+    margin: 10,
+    padding: 10,
+    backgroundColor: 'gray',
+    fontFamily: 'sans-serif',
+    borderRadius: 5
+  },
+  buttonContainer: {
+    marginTop: 10,
+    marginBottom: 20
   }
 }
 
@@ -54,9 +68,11 @@ const SignupJobSeekerPart1 = (props) => {
           value={props.password}
           onChange={props.onPasswordChanged}
         />
-        <Button raised type='submit'
-          disabled={!props.firstName || !props.lastName || !props.email || !props.password}>Submit</Button>
-        <Link to='/signup'>Back To Signup</Link>
+        <div className='button-container' style={styles.buttonContainer}>
+          <Button raised type='submit'
+            disabled={!props.firstName || !props.lastName || !props.email || !props.password}>Submit</Button>
+          <Link style={styles.link} to='/signup'>Back To Signup</Link>
+        </div>
       </form>
     </div>
   )
