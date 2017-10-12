@@ -14,6 +14,7 @@ Router.route('/')
       next(notLoggedIn())
       return
     }
+    console.log(user)
 
     const {codeWarsToken, codeWarsUserName} = user.local
 
@@ -24,8 +25,11 @@ Router.route('/')
 
     fetch(`https://www.codewars.com/api/v1/users/${codeWarsUserName}?access_key=${codeWarsToken}`)
       .then(response => response.json())
-      .then(json => json.data)
-      .then(data => res.json({ message: 'Successfully retrieved codewars info!', data }))
+      .then(data => {
+        console.log(data)
+        return data
+      })
+      .then(json => res.json({ message: 'Successfully retrieved codewars info!', json }))
       .catch(err => next(err))
   })
 

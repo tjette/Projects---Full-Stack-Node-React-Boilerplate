@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import {Component} from 'react'
 import * as ServerApi from '../../lib/serverApi'
 import PropTypes from 'prop-types'
 
@@ -11,50 +11,51 @@ class UserProvider extends Component {
   }
 
   state = {
-    user: null
+    user: null,
+    profile: null
   }
 
   methods = {
     signUpUser: (user) =>
       ServerApi.signUpUser(user)
-        .then((savedUser) => this.setState({
-          user: savedUser
-        })),
+        .then(user => this.onUserUpdated(user)),
 
     loginUser: (email, password) =>
       ServerApi.loginUser(email, password)
-        .then((loggedInUser) => {
-          this.setState({
-            user: loggedInUser
-          })
-          return loggedInUser
-        }),
+        .then(user => this.onUserUpdated(user)),
 
     logoutUser: () =>
       ServerApi.logoutUser()
-        .then(() => this.setState({ user: null })),
+        .then(() => this.onUserUpdated(null)),
 
     saveCodeWarsInfo: (info) =>
       ServerApi.saveCodeWarsInfo(this.state.user, info)
-        .then(() => this.methods.getUser()),
+        .then(user => this.onUserUpdated(user)),
 
     getUser: () =>
       ServerApi.getUser()
-        .then(user => {
-          this.setState({
-            user: user
-          })
-          if (user) {
-            this.methods.fetchCodeWarsProfile()
-          }
-        }),
+        .then(user => this.onUserUpdated(user))
+  }
 
-    fetchCodeWarsProfile: () =>
-      ServerApi.fetchCodeWarsProfile(this.state.user)
-        .then(profile =>
-          this.setState({
-            profile: profile
-          }))
+  onUserUpdated = user => {
+    if (!user) {
+      this.setState({
+        user: null,
+        profile: null
+      })
+    } else if (!user.local.codeWarsToken || !user.local.codeWarsUserName) {
+      console.log('no codewars info found')
+      this.setState({user})
+    } else {
+      console.log('about to fetch codewars info')
+      ServerApi.fetchCodeWarsProfile()
+        .then(profile => {
+          console.log(profile)
+          return profile
+        })
+        .then(profile => this.setState({user, profile}))
+    }
+    return user
   }
 
   componentDidMount () {
@@ -62,7 +63,6 @@ class UserProvider extends Component {
   }
 
   getChildContext () {
-    console.log('in get child context')
     return {
       userData: {
         ...this.state,
@@ -73,7 +73,6 @@ class UserProvider extends Component {
     }
   }
   render () {
-    console.log('in render')
     return this.props.children
   }
 }

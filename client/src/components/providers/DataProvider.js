@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import {Component} from 'react'
 import * as ServerApi from '../../lib/serverApi'
 import PropTypes from 'prop-types'
 
@@ -48,7 +48,6 @@ class DataProvider extends Component {
     this.methods.getAllJobs()
   }
   getChildContext () {
-    console.log('in get child context')
     return {
       mainData: {
         ...this.state,

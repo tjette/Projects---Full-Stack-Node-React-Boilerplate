@@ -49,7 +49,7 @@ export const getUser = () => ajaxRequest({url: '/api/get_user', method: 'GET'})
 
 export const saveCodeWarsInfo = (user, codeWarsInfo) => ajaxRequest({url: `/api/users/${user._id}`, method: 'PUT', body: codeWarsInfo})
 
-export const fetchCodeWarsProfile = (user) =>
+export const fetchCodeWarsProfile = () =>
   ajaxRequest({
     url: '/api/codewars', method: 'GET'
   })

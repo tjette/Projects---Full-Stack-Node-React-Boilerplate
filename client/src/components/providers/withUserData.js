@@ -9,7 +9,6 @@ const withUserData = (BaseComponent) => class WithUserData extends Component {
     userData: PropTypes.object.isRequired
   }
   render () {
-    console.log(this.context.userData)
     return (
       <BaseComponent
         userData={this.context.userData || defaultUserData}

@@ -27,7 +27,6 @@ const styles = {
 const enhancer = injectSheet(styles)
 
 const Header = (props) => {
-  console.log(props)
   return (
     <header>
       <nav style={styles.root}>
@@ -44,4 +43,4 @@ const Header = (props) => {
 }
 Header.propTypes = propTypes
 
-export default withUserData(Header)
+export default enhancer(withUserData(Header))
