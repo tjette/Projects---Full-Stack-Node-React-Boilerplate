@@ -39,7 +39,11 @@ Router.route('/:job_id')
   })
   .put((req, res) => {
     Job.findById(req.params.job_id, (err, job) => {
-      job.loadData(req.body)
+      console.log('job', job)
+      job.companyName = req.body.companyName
+      job.jobTitle = req.body.jobTitle
+      job.jobDescription = req.body.jobDescription
+      job.codeWarLevel = req.body.codeWarLevel
       console.log('PUTTING PRODUCT', job)
       job.save((err, savedJob) => {
         if (err) {

@@ -13,7 +13,7 @@ const propTypes = {
   jobTitle: PropTypes.string.isRequired,
   jobDescription: PropTypes.string.isRequired,
   codeWarLevel: PropTypes.number.isRequired,
-  onCompanyChanged: PropTypes.func.isRequired,
+  onCompanyNameChanged: PropTypes.func.isRequired,
   onJobTitleChanged: PropTypes.func.isRequired,
   onJobDescriptionChanged: PropTypes.func.isRequired,
   onCodewarLevelChanged: PropTypes.func.isRequired,
@@ -42,7 +42,7 @@ const AddJobForm = (props) => {
       <h1>Add Job</h1>
       <form onSubmit={props.onSubmit}>
         <TextField
-          label='Company' value={props.companyName} onChange={props.onCompanyChanged} />
+          label='Company' value={props.companyName} onChange={props.onCompanyNameChanged} />
         <TextField
           label='Job Title' value={props.jobTitle} onChange={props.onJobTitleChanged} />
         <TextField
