@@ -26,6 +26,9 @@ class LoginContainer extends Component {
         console.log(user)
         alert(`You are logged in ${user.local.firstName}`)
       })
+      .catch((err) => {
+        console.log(err)
+      })
   }
   render () {
     return (

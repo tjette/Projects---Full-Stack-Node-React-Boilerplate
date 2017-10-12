@@ -29,7 +29,7 @@ Router.route('/')
         console.log(data)
         return data
       })
-      .then(json => res.json({ message: 'Successfully retrieved codewars info!', json }))
+      .then(data => res.json({ message: 'Successfully retrieved codewars info!', data }))
       .catch(err => next(err))
   })
 
