@@ -51,9 +51,5 @@ export const saveCodeWarsInfo = (user, codeWarsInfo) => ajaxRequest({url: `/api/
 
 export const fetchCodeWarsProfile = (user) =>
   ajaxRequest({
-    url: `https://www.codewars.com/api/v1/users/${user.local.codeWarsUserName}`,
-    method: 'GET',
-    headers: {
-      Authorization: user.local.codeWarsToken
-    }
+    url: '/api/codewars', method: 'GET'
   })

@@ -1,12 +1,4 @@
-const createError = (statusCode, errorCode, message) => (info) => {
-  const err = Error(message)
-  err.type = 'RestError'
-  err.serverStatusCode = statusCode
-  err.errorCode = errorCode
-  err.errorMessage = message
-  err.info = info
-  return err
-}
+const createError = require('../utils/createError')
 
 module.exports = {
   unknownEmail: createError(401, 'UNKNOWN_EMAIL', 'The email address was not found.'),

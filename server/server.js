@@ -7,6 +7,7 @@ const mongoose = require('mongoose')
 
 const jobRoutes = require('./routes/jobs')
 const userRoutes = require('./routes/users')
+const codeWarsRoutes = require('./routes/codeWars')
 
 const app = express()
 const port = 3001
@@ -29,6 +30,7 @@ require('./passport/routes')(app, passport) // load our routes and pass in our a
 
 app.use('/api/jobs', jobRoutes)
 app.use('/api/users', userRoutes)
+app.use('/api/codewars', codeWarsRoutes)
 
 app.use(require('./config/error-handler'))
 
