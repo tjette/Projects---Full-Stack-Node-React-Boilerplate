@@ -11,7 +11,7 @@ class AddJobContainer extends Component {
     codeWarLevel: 2
   }
 
-  onCompanyChanged = (event) => this.setState({companyName: event.target.value})
+  onCompanyNameChanged = (event) => this.setState({companyName: event.target.value})
   onJobTitleChanged = (event) => this.setState({jobTitle: event.target.value})
   onJobDescriptionChanged = (event) => this.setState({jobDescription: event.target.value})
   onCodewarLevelChanged = (event) => this.setState({codeWarLevel: event.target.value})
@@ -27,7 +27,7 @@ class AddJobContainer extends Component {
       <div>
         <AddJobForm
           {...this.state}
-          onCompanyChanged={this.onCompanyChanged}
+          onCompanyNameChanged={this.onCompanyNameChanged}
           onJobTitleChanged={this.onJobTitleChanged}
           onJobDescriptionChanged={this.onJobDescriptionChanged}
           onCodewarLevelChanged={this.onCodewarLevelChanged}

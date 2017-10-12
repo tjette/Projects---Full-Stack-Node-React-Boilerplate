@@ -30,6 +30,11 @@ const styles = {
     display: 'flex',
     justifyContent: 'flex-start',
     flexDirection: 'column'
+  },
+  favoriteIcon: {
+    '&:hover': {
+      color: 'red'
+    }
   }
 }
 const enhancer = injectSheet(styles)
@@ -61,7 +66,7 @@ const JobCard = (props) => {
         </CardActions>
         </CardContent>
         <IconButton>
-          <FavoriteIcon />
+          <FavoriteIcon className={props.classes.favoriteIcon} />
         </IconButton>
       </Card>
     </div>
