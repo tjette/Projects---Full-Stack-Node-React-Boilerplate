@@ -18,14 +18,15 @@ const styles = {
     marginTop: 50
   }
 }
-const SignupJobSeekerPart3 = () => {
+const SignupJobSeekerPart3 = (props) => {
   return (
     <div>
-      <form style={styles.form}>
+      <form style={styles.form} onSubmit={props.onSubmitJobSeekerPart3}>
         <TextField
-          label='Upload Resume'
+          label='Link to Resume URL'
+          onChange={props.onResumeUrlChanged}
         />
-        <Button style={styles.button} raised>Submit</Button>
+        <Button type='submit' style={styles.button} raised>Submit</Button>
         <Button><Link to='/signup/jobSeekerpart2'>Go Back To Part 2</Link></Button>
         <Button><Link to='/'>Skip resume upload. Finish Signup Process</Link></Button>
         <Button><Link to='/'>Cancel Signup</Link></Button>

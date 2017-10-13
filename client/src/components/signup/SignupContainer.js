@@ -26,6 +26,9 @@ class SignupContainer extends Component {
     part2: {
       codeWarsToken: '',
       codeWarsUserName: ''
+    },
+    part3: {
+      resumeUrl: ''
     }
   }
 
@@ -69,6 +72,13 @@ class SignupContainer extends Component {
       codeWarsUserName: event.target.value
     }
   })
+
+  onResumeUrlChanged = (event) => this.setState({
+    part3: {
+      ...this.state.part3,
+      resumeUrl: event.target.value
+    }
+  })
   onSubmitJobSeekerPart1 = (event) => {
     console.log('Hi')
     event.preventDefault()
@@ -85,7 +95,7 @@ class SignupContainer extends Component {
 
   onSubmitJobSeekerPart2 = (event) => {
     event.preventDefault()
-    this.props.userData.saveCodeWarsInfo(this.state.part2)
+    this.props.userData.updateUserInfo(this.state.part2)
       .then(() => {
         console.log('savedCodeWarsInfo method fired')
         this.props.history.push('/signup/job-seeker-part3')
@@ -95,6 +105,17 @@ class SignupContainer extends Component {
       })
   }
 
+  onSubmitJobSeekerPart3 = (event) => {
+    event.preventDefault()
+    this.props.userData.updateUserInfo(this.state.part3)
+      .then(() => {
+        console.log('update user Info method fired')
+        this.props.history.push('/jobs')
+      })
+      .catch((error) => {
+        alert(error)
+      })
+  }
   onSubmitEmployerPart1 = (event) => {
     event.preventDefault()
     this.props.userData.signUpUser(this.state.part1)
@@ -132,8 +153,9 @@ class SignupContainer extends Component {
         <Route exact path={`${match.path}/job-seeker-part3`}
           render={() =>
             <SignupJobSeekerPart3
-              {...this.state}
+              {...this.state.part3}
               onSubmitJobSeekerPart3={this.onSubmitJobSeekerPart3}
+              onResumeUrlChanged={this.onResumeUrlChanged}
             />} />
         <Route path={`${match.path}/employer`}
           render={() =>

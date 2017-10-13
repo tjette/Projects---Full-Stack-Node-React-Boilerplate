@@ -8,7 +8,8 @@ const UserSchema = new mongoose.Schema({
     password: String,
     isAdmin: Boolean,
     codeWarsToken: String,
-    codeWarsUserName: String
+    codeWarsUserName: String,
+    resumeUrl: String
   }
 })
 

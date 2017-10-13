@@ -47,7 +47,7 @@ export const logoutUser = () => ajaxRequest({url: '/api/logout', method: 'GET'})
 
 export const getUser = () => ajaxRequest({url: '/api/get_user', method: 'GET'})
 
-export const saveCodeWarsInfo = (user, codeWarsInfo) => ajaxRequest({url: `/api/users/${user._id}`, method: 'PUT', body: codeWarsInfo})
+export const updateUserInfo = (user, info) => ajaxRequest({url: `/api/users/${user._id}`, method: 'PUT', body: info})
 
 export const fetchCodeWarsProfile = () =>
   ajaxRequest({

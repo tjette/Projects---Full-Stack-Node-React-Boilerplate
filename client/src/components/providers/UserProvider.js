@@ -15,23 +15,28 @@ class UserProvider extends Component {
     profile: null
   }
 
+  handleServerApiError = err => {
+    alert(err)
+    throw err
+  }
+
   methods = {
     signUpUser: (user) =>
       ServerApi.signUpUser(user)
         .then(user => this.onUserUpdated(user))
-        .catch(err => alert(err)),
+        .catch(this.handleServerApiError),
 
     loginUser: (email, password) =>
       ServerApi.loginUser(email, password)
         .then(user => this.onUserUpdated(user))
-        .catch((err) => alert(err)),
+        .catch(this.handleServerApiError),
 
     logoutUser: () =>
       ServerApi.logoutUser()
         .then(() => this.onUserUpdated(null)),
 
-    saveCodeWarsInfo: (info) =>
-      ServerApi.saveCodeWarsInfo(this.state.user, info)
+    updateUserInfo: (info) =>
+      ServerApi.updateUserInfo(this.state.user, info)
         .then(user => this.onUserUpdated(user)),
 
     getUser: () =>

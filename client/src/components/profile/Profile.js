@@ -1,7 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import withUserData from '../../components/providers/withUserData'
+import withUserData from '../providers/withUserData'
 import injectSheet from 'react-jss'
+import LabeledValue from '../utils/LabeledValue'
+import CardComponent from '../utils/CardComponent'
 
 const propTypes = {
   userData: PropTypes.object.isRequired,
@@ -27,7 +29,13 @@ const styles = {
     display: 'flex',
     justifyContent: 'flex-start',
     flexDirection: 'column',
-    marginRight: 200
+    marginRight: 300,
+    width: 300,
+    border: {
+      color: 'black',
+      width: 3,
+      style: 'solid'
+    }
   },
   codeWarsCard: {
     display: 'flex',
@@ -37,27 +45,31 @@ const styles = {
 }
 const enhancer = injectSheet(styles)
 
-const Profile = (props) => {
+const Profile = ({classes, userData: {user, profile}}) => {
+  const {firstName, lastName, email, resumeUrl} = user.local
   return (
     <div>
-      <div className={props.classes.header}>
-        <h1 className={props.classes.headerProfile}>Profile - {props.userData.user.local.firstName}</h1>
+      <div className={classes.header}>
+        <h1 className={classes.headerProfile}>Profile - {firstName}</h1>
       </div>
-      <div className={props.classes.flexContainer}>
-        <div className={props.classes.profileCard}>
-          <h3>First Name: {props.userData.user.local.firstName}</h3>
-          <h3>Last Name: {props.userData.user.local.lastName}</h3>
-          <h3>Email: {props.userData.user.local.email}</h3>
-        </div>
-        { props.userData.profile ?
-          <div className={props.classes.codeWarsCard}>
+      <div className={classes.flexContainer}>
+        <CardComponent className={classes.profileCard}>
+          <h1>Profile</h1>
+          <LabeledValue label='First Name'>{firstName}</LabeledValue>
+          <LabeledValue label='Last Name'>{lastName}</LabeledValue>
+          <LabeledValue label='Email'>{email}</LabeledValue>
+          <LabeledValue label='Resume Url'>{resumeUrl}</LabeledValue>
+        </CardComponent>
+        { profile ?
+          <div className={classes.codeWarsCard}>
             <h1>CODE WARS</h1>
-            <h3>Code Wars Username: {props.userData.profile.username}</h3>
-            <h3>Total Code Challenges Completed: {props.userData.profile.codeChallenges.totalCompleted}</h3>
-            <h3>Rank and name: {props.userData.profile.ranks.languages.javascript['name']}</h3>
-            <h3>Code Wars Honor Level: {props.userData.profile.honor}</h3>
-            <h3>Code Wars Leader Board Position: {props.userData.profile.leaderboardPosition}</h3>
-            <h3>Code Wars: {props.userData.profile.leaderboardPosition}</h3>
+            <LabeledValue label='Codewars Username'>{profile.username}</LabeledValue>
+            <LabeledValue label='Total Code Challenges Completed'>{profile.codeChallenges.totalCompleted}</LabeledValue>
+            <LabeledValue label='Rank and Name'>{profile.ranks.languages.javascript['name']}</LabeledValue>
+            <LabeledValue label='Codewars Honor Level'>{profile.honor}</LabeledValue>
+            <LabeledValue label='Codewars Leader Board Position'>{profile.leaderboardPosition}</LabeledValue>
+            <LabeledValue label='Codewars Leader Board Position'>{profile.leaderboardPosition}</LabeledValue>
+
           </div> : null
         }
       </div>

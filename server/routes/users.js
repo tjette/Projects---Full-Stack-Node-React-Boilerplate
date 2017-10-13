@@ -6,8 +6,10 @@ const User = require('../models/User')
 Router.route('/:user_id')
   .put((req, res) => {
     User.findById(req.params.user_id, (err, user) => {
-      user.local.codeWarsToken = req.body.codeWarsToken
-      user.local.codeWarsUserName = req.body.codeWarsUserName
+      user.local.codeWarsToken = req.body.codeWarsToken || user.local.codeWarsToken
+      user.local.codeWarsUserName = req.body.codeWarsUserName || user.local.codeWarsUserName
+      user.local.resumeUrl = req.body.resumeUrl || user.local.resumeUrl
+
       console.log('PUTTING User', user)
       user.save((err, savedUser) => {
         console.log(savedUser)
