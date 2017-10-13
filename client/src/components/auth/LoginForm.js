@@ -37,7 +37,7 @@ const LoginForm = (props) => {
           value={props.password}
           onChange={props.onPasswordChanged}
         />
-        <Button type='submit' raised>Login</Button>
+        <Button type='submit' disabled={!props.email || !props.password} raised>Login</Button>
       </form>
     </div>
   )
