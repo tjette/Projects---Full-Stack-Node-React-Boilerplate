@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import TextField from 'material-ui/TextField'
 import Button from 'material-ui/Button'
 import PropTypes from 'prop-types'
+import injectSheet from 'react-jss'
 
 const propTypes = {
   firstName: PropTypes.string.isRequired,
@@ -17,6 +18,8 @@ const propTypes = {
   onCompanyChanged: PropTypes.func.isRequired,
   onSubmitEmployerPart1: PropTypes.func.isRequired
 }
+
+const enhancer = injectSheet(styles)
 
 const styles = {
   header: {
@@ -33,6 +36,20 @@ const styles = {
   },
   textFields: {
     display: 'flex'
+  },
+  link: {
+    textDecoration: 'none',
+    color: 'black',
+    textTransform: 'uppercase',
+    margin: 10,
+    padding: 10,
+    backgroundColor: 'gray',
+    fontFamily: 'sans-serif',
+    borderRadius: 5
+  },
+  buttonContainer: {
+    marginTop: 10,
+    marginBottom: 20
   }
 }
 
@@ -70,4 +87,4 @@ const SignupEmployerPart1 = (props) => {
 
 SignupEmployerPart1.propTypes = propTypes
 
-export default SignupEmployerPart1
+export default enhancer(SignupEmployerPart1)
