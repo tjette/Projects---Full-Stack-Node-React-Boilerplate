@@ -18,7 +18,8 @@ class UserProvider extends Component {
   methods = {
     signUpUser: (user) =>
       ServerApi.signUpUser(user)
-        .then(user => this.onUserUpdated(user)),
+        .then(user => this.onUserUpdated(user))
+        .catch(err => alert(err)),
 
     loginUser: (email, password) =>
       ServerApi.loginUser(email, password)
@@ -27,8 +28,7 @@ class UserProvider extends Component {
 
     logoutUser: () =>
       ServerApi.logoutUser()
-        .then(() => this.onUserUpdated(null))
-        .catch((err) => alert(err)),
+        .then(() => this.onUserUpdated(null)),
 
     saveCodeWarsInfo: (info) =>
       ServerApi.saveCodeWarsInfo(this.state.user, info)
