@@ -22,11 +22,13 @@ class UserProvider extends Component {
 
     loginUser: (email, password) =>
       ServerApi.loginUser(email, password)
-        .then(user => this.onUserUpdated(user)),
+        .then(user => this.onUserUpdated(user))
+        .catch((err) => alert(err)),
 
     logoutUser: () =>
       ServerApi.logoutUser()
-        .then(() => this.onUserUpdated(null)),
+        .then(() => this.onUserUpdated(null))
+        .catch((err) => alert(err)),
 
     saveCodeWarsInfo: (info) =>
       ServerApi.saveCodeWarsInfo(this.state.user, info)

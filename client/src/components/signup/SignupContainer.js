@@ -96,7 +96,7 @@ class SignupContainer extends Component {
         this.props.history.push('/signup/job-seeker-part3')
       })
       .catch((error) => {
-        console.log(error)
+        alert(error)
       })
   }
 
