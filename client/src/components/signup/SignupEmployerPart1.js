@@ -57,16 +57,11 @@ const SignupEmployerPart1 = (props) => {
           onChange={props.onEmailChanged}
         />
         <TextField style={styles.textFields}
-          label='Company'
-          value={props.company}
-          onChange={props.onCompanyChanged}
-        />
-        <TextField style={styles.textFields}
           label='Password'
           value={props.password}
           onChange={props.onPasswordChanged}
         />
-        <Button type='submit' raised>Submit</Button>
+        <Button type='submit' disabled={!props.firstName || !props.lastName || !props.email || !props.password} raised>Submit</Button>
         <Link to='/signup'>Back To Signup</Link>
       </form>
     </div>

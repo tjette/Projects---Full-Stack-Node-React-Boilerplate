@@ -49,15 +49,17 @@ const Profile = (props) => {
           <h3>Last Name: {props.userData.user.local.lastName}</h3>
           <h3>Email: {props.userData.user.local.email}</h3>
         </div>
-        <div className={props.classes.codeWarsCard}>
-          <h1>CODE WARS</h1>
-          <h3>Code Wars Username: {props.userData.profile.username}</h3>
-          <h3>Total Code Challenges Completed: {props.userData.profile.codeChallenges.totalCompleted}</h3>
-          <h3>Rank and name: {props.userData.profile.ranks.languages.javascript['name']}</h3>
-          <h3>Code Wars Honor Level: {props.userData.profile.honor}</h3>
-          <h3>Code Wars Leader Board Position: {props.userData.profile.leaderboardPosition}</h3>
-          <h3>Code Wars: {props.userData.profile.leaderboardPosition}</h3>
-        </div>
+        { props.userData.profile ?
+          <div className={props.classes.codeWarsCard}>
+            <h1>CODE WARS</h1>
+            <h3>Code Wars Username: {props.userData.profile.username}</h3>
+            <h3>Total Code Challenges Completed: {props.userData.profile.codeChallenges.totalCompleted}</h3>
+            <h3>Rank and name: {props.userData.profile.ranks.languages.javascript['name']}</h3>
+            <h3>Code Wars Honor Level: {props.userData.profile.honor}</h3>
+            <h3>Code Wars Leader Board Position: {props.userData.profile.leaderboardPosition}</h3>
+            <h3>Code Wars: {props.userData.profile.leaderboardPosition}</h3>
+          </div> : null
+        }
       </div>
     </div>
   )

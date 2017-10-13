@@ -49,12 +49,7 @@ class SignupContainer extends Component {
       email: event.target.value
     }
   })
-  onCompanyChanged = (event) => this.setState({
-    part1: {
-      ...this.state.part1,
-      company: event.target.value
-    }
-  })
+
   onPasswordChanged = (event) => this.setState({
     part1: {
       ...this.state.part1,
@@ -106,7 +101,7 @@ class SignupContainer extends Component {
       .then(() => {
         alert(`Welcome, ${this.state.firstName}`)
         console.log('on submit triggered')
-        this.setState({employer: true})
+        this.setState({isEmployer: true})
         this.props.history.push('jobs/add')
       })
   }
@@ -143,13 +138,12 @@ class SignupContainer extends Component {
         <Route path={`${match.path}/employer`}
           render={() =>
             <SignupEmployerPart1
-              {...this.state}
+              {...this.state.part1}
               onFirstNameChanged={this.onFirstNameChanged}
               onLastNameChanged={this.onLastNameChanged}
               onEmailChanged={this.onEmailChanged}
-              onCompanyChanged={this.onCompanyChanged}
               onPasswordChanged={this.onPasswordChanged}
-              onSubmitJobSeekerPart1={this.onSubmitJobSeekerPart1}
+              onSubmitEmployerPart1={this.onSubmitEmployerPart1}
             />} />
         <Route exact path={match.path} component={SignupChooser} />
       </div>
