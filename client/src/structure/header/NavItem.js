@@ -5,7 +5,7 @@ import injectSheet from 'react-jss'
 
 const propTypes = {
   classes: PropTypes.object.isRequired,
-  children: PropTypes.element.isRequired,
+  children: PropTypes.string.isRequired,
   to: PropTypes.string.isRequired
 }
 

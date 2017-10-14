@@ -3,7 +3,10 @@ import PropTypes from 'prop-types'
 
 const propTypes = {
   label: PropTypes.string.isRequired,
-  children: PropTypes.element.isRequired
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ])
 }
 
 const LabeledValue = ({label, children}) => {

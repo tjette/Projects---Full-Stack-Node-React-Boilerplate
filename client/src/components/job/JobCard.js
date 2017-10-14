@@ -27,6 +27,9 @@ const styles = {
     width: 350,
     margin: 50
   },
+  jobTitle: {
+    backgroundColor: 'gray'
+  },
   media: {
     height: 200
   },
@@ -48,7 +51,7 @@ const JobCard = ({classes, onDelete, onEdit, userData, job}) => {
   return (
     <div className={classes.jobCard}>
       <CardComponent>
-        <LabeledValue label='Job Title'>{jobTitle}</LabeledValue>
+        <LabeledValue className={classes.jobTitle} label='Job Title'>{jobTitle}</LabeledValue>
         <LabeledValue label='Company Name'>{companyName}</LabeledValue>
         <LabeledValue label='Codewar Level'>{codeWarLevel}</LabeledValue>
         <LabeledValue label='Job Description'>{jobDescription}</LabeledValue>
