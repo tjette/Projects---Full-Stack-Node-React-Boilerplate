@@ -1,7 +1,15 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import PropTypes from 'prop-types'
+import injectSheet from 'react-jss'
 import TextField from 'material-ui/TextField'
 import Button from 'material-ui/Button'
+
+const propTypes = {
+  classes: PropTypes.object.isRequired,
+  onSubmitJobSeekerPart3: PropTypes.func.isRequired,
+  onResumeUrlChanged: PropTypes.func.isRequired
+}
 
 const styles = {
   header: {
@@ -18,15 +26,18 @@ const styles = {
     marginTop: 50
   }
 }
-const SignupJobSeekerPart3 = (props) => {
+
+const enhancer = injectSheet(styles)
+
+const SignupJobSeekerPart3 = ({classes, onSubmitJobSeekerPart3, onResumeUrlChanged}) => {
   return (
     <div>
-      <form style={styles.form} onSubmit={props.onSubmitJobSeekerPart3}>
+      <form className={classes.form} onSubmit={onSubmitJobSeekerPart3}>
         <TextField
           label='Link to Resume URL'
-          onChange={props.onResumeUrlChanged}
+          onChange={onResumeUrlChanged}
         />
-        <Button type='submit' style={styles.button} raised>Submit</Button>
+        <Button type='submit' className={classes.button} raised>Submit</Button>
         <Button><Link to='/signup/jobSeekerpart2'>Go Back To Part 2</Link></Button>
         <Button><Link to='/'>Skip resume upload. Finish Signup Process</Link></Button>
         <Button><Link to='/'>Cancel Signup</Link></Button>
@@ -35,4 +46,6 @@ const SignupJobSeekerPart3 = (props) => {
   )
 }
 
-export default SignupJobSeekerPart3
+SignupJobSeekerPart3.propTypes = propTypes
+
+export default enhancer(SignupJobSeekerPart3)

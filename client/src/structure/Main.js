@@ -1,5 +1,6 @@
 import React from 'react'
 import {Route} from 'react-router-dom'
+import PropTypes from 'prop-types'
 import injectSheet from 'react-jss'
 import Home from '../components/Home'
 import SignupContainer from '../components/signup/SignupContainer'
@@ -8,6 +9,9 @@ import LoginContainer from '../components/auth/LoginContainer'
 import Jobs from '../components/job/Jobs'
 import ProfileContainer from '../components/profile/ProfileContainer'
 
+const propTypes = {
+  classes: PropTypes.object.isRequired
+}
 const styles = {
   main: {
     overflow: 'scroll',
@@ -33,5 +37,7 @@ const Main = (props) => {
     </div>
   )
 }
+
+Main.propTypes = propTypes
 
 export default enhancer(Main)

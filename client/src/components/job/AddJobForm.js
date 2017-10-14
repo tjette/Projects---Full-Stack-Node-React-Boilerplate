@@ -1,10 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import injectSheet from 'react-jss'
 import TextField from 'material-ui/TextField'
 import Select from 'material-ui/Select'
-import MenuItem from 'material-ui/Menu/MenuItem'
-import {FormControl} from 'material-ui/Form'
-import {InputLabel} from 'material-ui/Input'
 import Button from 'material-ui/Button'
 import {Link} from 'react-router-dom'
 
@@ -36,6 +34,8 @@ const styles = {
   }
 }
 
+const enhancer = injectSheet(styles)
+
 const AddJobForm = (props) => {
   return (
     <div>
@@ -59,4 +59,4 @@ const AddJobForm = (props) => {
 
 AddJobForm.propTypes = propTypes
 
-export default AddJobForm
+export default enhancer(AddJobForm)

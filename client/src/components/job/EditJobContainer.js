@@ -1,7 +1,14 @@
 import React, {Component} from 'react'
 import {withRouter} from 'react-router-dom'
+import PropTypes from 'prop-types'
 import withMainData from '../../components/providers/withMainData'
 import EditJob from './EditJob'
+
+const propTypes = {
+  mainData: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired
+}
 
 class EditJobContainer extends Component {
   constructor (props) {
@@ -53,5 +60,7 @@ class EditJobContainer extends Component {
       )
     }
 }
+
+EditJobContainer.propTypes = propTypes
 
 export default withRouter(withMainData(EditJobContainer))

@@ -1,6 +1,13 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
+import PropTypes from 'prop-types'
 import injectSheet from 'react-jss'
+
+const propTypes = {
+  classes: PropTypes.object.isRequired,
+  children: PropTypes.element.isRequired,
+  to: PropTypes.string.isRequired
+}
 
 const styles = {
   navLink: {
@@ -12,7 +19,7 @@ const styles = {
     '&:hover': {
       color: 'black',
       backgroundColor: '#ccc',
-      borderRadius: 10,
+      borderRadius: 10
     }
   }
 }
@@ -26,5 +33,7 @@ const NavItem = (props) => {
     </div>
   )
 }
+
+NavItem.propTypes = propTypes
 
 export default enhancer(NavItem)

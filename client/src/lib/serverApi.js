@@ -1,5 +1,4 @@
 const ajaxRequest = ({url, method, body, headers = {}}) => {
-
   const requestHeaders = new Headers({
     'Content-Type': 'application/json',
     ...headers

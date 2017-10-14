@@ -12,10 +12,9 @@ const propTypes = {
 const styles = {
   header: {
     textAlign: 'center',
-    backgroundColor: 'lightgreen',
+    backgroundColor: 'darkseagreen',
     paddingBottom: 50,
     paddingTop: 50,
-    background: 'url(https://static1.squarespace.com/static/555df46ae4b0d3e57f287ab1/t/577b20bd9de4bb9417fccc29/1467687132636/) no-repeat center center fixed',
     backgroundSize: 'cover'
 
   },
@@ -24,6 +23,9 @@ const styles = {
   },
   flexContainer: {
     display: 'flex'
+  },
+  profileHeader: {
+
   },
   profileCard: {
     display: 'flex',

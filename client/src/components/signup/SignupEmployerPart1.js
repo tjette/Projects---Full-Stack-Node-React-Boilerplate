@@ -10,16 +10,12 @@ const propTypes = {
   lastName: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
-  company: PropTypes.string.isRequired,
   onFirstNameChanged: PropTypes.func.isRequired,
   onLastNameChanged: PropTypes.func.isRequired,
   onEmailChanged: PropTypes.func.isRequired,
   onPasswordChanged: PropTypes.func.isRequired,
-  onCompanyChanged: PropTypes.func.isRequired,
   onSubmitEmployerPart1: PropTypes.func.isRequired
 }
-
-const enhancer = injectSheet(styles)
 
 const styles = {
   header: {
@@ -52,6 +48,8 @@ const styles = {
     marginBottom: 20
   }
 }
+
+const enhancer = injectSheet(styles)
 
 const SignupEmployerPart1 = (props) => {
   return (

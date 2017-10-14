@@ -1,23 +1,56 @@
 import React from 'react'
 import {Link, withRouter} from 'react-router-dom'
+import PropTypes from 'prop-types'
+import injectSheet from 'react-jss'
 import JobCard from './JobCard'
 import withMainData from '../../components/providers/withMainData'
+import Button from 'material-ui/Button'
 
-const JobList = (props) => {
+const propTypes = {
+  classes: PropTypes.object.isRequired,
+  mainData: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired
+}
+const styles = {
+  headerContainer: {
+    textAlign: 'center',
+    backgroundColor: 'darkseagreen',
+    marginTop: -21
+  },
+  header: {
+    paddingTop: 50,
+    paddingBottom: 50
+  },
+  button: {
+    '&:hover': {
+      backgroundColor: 'lawngreen'
+    }
+  },
+  link: {
+    textDecoration: 'none',
+    color: 'black'
+  }
+}
+
+const enhancer = injectSheet(styles)
+
+const JobList = ({classes, mainData, history}) => {
   return (
     <div>
-      <h1>Job List</h1>
-      <Link to='/jobs/add'>Add Job</Link>
+      <div className={classes.headerContainer}>
+        <h1 className={classes.header}>Current Jobs</h1>
+        <Button raised className={classes.button}><Link className={classes.link} to='/jobs/add'>Add Job</Link></Button>
+      </div>
       <div>
 
         {
-          props.mainData.jobs.length > 0
-            ? props.mainData.jobs.map(job =>
+          mainData.jobs.length > 0
+            ? mainData.jobs.map(job =>
               <JobCard
                 key={job._id}
                 job={job}
-                onDelete={() => props.mainData.deleteJob(job._id)}
-                onEdit={() => props.history.push(`/jobs/edit/${job._id}`)}
+                onDelete={() => mainData.deleteJob(job._id)}
+                onEdit={() => history.push(`/jobs/edit/${job._id}`)}
               />
             )
             : <h1>No Jobs have been added</h1>
@@ -27,4 +60,6 @@ const JobList = (props) => {
   )
 }
 
-export default withRouter(withMainData(JobList))
+JobList.propTypes = propTypes
+
+export default enhancer(withRouter(withMainData(JobList)))

@@ -2,16 +2,20 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import injectSheet from 'react-jss'
 import withUserData from '../../components/providers/withUserData'
-import { withStyles } from 'material-ui/styles'
-import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card'
+import {CardActions} from 'material-ui/Card'
 import Button from 'material-ui/Button'
-import Typography from 'material-ui/Typography'
 import FavoriteIcon from 'material-ui-icons/Favorite'
 import IconButton from 'material-ui/IconButton'
 import ExpandMoreIcon from 'material-ui-icons/ExpandMore'
+import CardComponent from '../utils/CardComponent'
+import LabeledValue from '../utils/LabeledValue'
 
 const propTypes = {
-
+  classes: PropTypes.object.isRequired,
+  onDelete: PropTypes.func.isRequired,
+  onEdit: PropTypes.func.isRequired,
+  userData: PropTypes.object.isRequired,
+  job: PropTypes.object.isRequired
 }
 const styles = {
   jobCard: {
@@ -39,36 +43,23 @@ const styles = {
 }
 const enhancer = injectSheet(styles)
 
-const JobCard = (props) => {
+const JobCard = ({classes, onDelete, onEdit, userData, job}) => {
+  const {jobTitle, companyName, jobDescription, codeWarLevel} = job
   return (
-    <div className={props.classes.jobCard}>
-      <Card>
-        <CardMedia
-          className={props.classes.media}
-          image='https://images.unsplash.com/1/macbook-air-all-faded-and-stuff.jpg?dpr=1&auto=compress,format&fit=crop&w=376&h=251&q=80&cs=tinysrgb&crop='
-        />
-        <CardContent className={props.classes.jobContent}>
-          <Typography type="headline" className=''>
-            Job Title:{props.job.jobTitle}
-          </Typography>
-          <Typography type="body1" className=''>
-            Company Name:{props.job.companyName}
-          </Typography>
-          <Typography type="body1" className=''>
-            Job Description:{props.job.jobDescription}
-          </Typography>
-          <Typography type="body1" className=''>
-            Codewar Level Required:{props.job.codeWarLevel}
-          </Typography>
+    <div className={classes.jobCard}>
+      <CardComponent>
+        <LabeledValue label='Job Title'>{jobTitle}</LabeledValue>
+        <LabeledValue label='Company Name'>{companyName}</LabeledValue>
+        <LabeledValue label='Codewar Level'>{codeWarLevel}</LabeledValue>
+        <LabeledValue label='Job Description'>{jobDescription}</LabeledValue>
         <CardActions>
-          { props.userData.user.local.isAdmin && props.userData.loggedIn ? <Button dense color='primary' onClick={props.onDelete}>Delete Product</Button> : null }
-          { props.userData.user.local.isAdmin && props.userData.loggedIn ? <Button dnese color='primary' onClick={props.onEdit}>Edit</Button> : null }
+          {userData.user.local.isAdmin && userData.loggedIn ? <Button dense color='primary' onClick={onDelete}>Delete Product</Button> : null }
+          {userData.user.local.isAdmin && userData.loggedIn ? <Button dnese color='primary' onClick={onEdit}>Edit</Button> : null }
         </CardActions>
-        </CardContent>
         <IconButton>
-          <FavoriteIcon className={props.classes.favoriteIcon} />
+          <FavoriteIcon className={classes.favoriteIcon} />
         </IconButton>
-      </Card>
+      </CardComponent>
     </div>
   )
 }

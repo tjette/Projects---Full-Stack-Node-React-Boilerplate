@@ -1,8 +1,13 @@
 import React, {Component} from 'react'
 import {withRouter} from 'react-router-dom'
+import PropTypes from 'prop-types'
 import AddJobForm from './AddJobForm'
 import withMainData from '../../components/providers/withMainData'
 
+const propTypes = {
+  mainData: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired
+}
 class AddJobContainer extends Component {
   state = {
     companyName: 'test',
@@ -38,5 +43,7 @@ class AddJobContainer extends Component {
     )
   }
 }
+
+AddJobContainer.propTypes = propTypes
 
 export default withRouter(withMainData(AddJobContainer))

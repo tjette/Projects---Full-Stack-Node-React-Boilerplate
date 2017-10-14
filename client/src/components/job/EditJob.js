@@ -4,7 +4,15 @@ import injectSheet from 'react-jss'
 import withUserData from '../../components/providers/withUserData'
 
 const propTypes = {
-
+  jobTitle: PropTypes.string.isRequired,
+  companyName: PropTypes.string.isRequired,
+  jobDescription: PropTypes.string.isRequired,
+  codeWarLevel: PropTypes.string.isRequired,
+  onJobTitleChanged: PropTypes.string.isRequired,
+  onCompanyNameChanged: PropTypes.string.isRequired,
+  onJobDescriptionChanged: PropTypes.string.isRequired,
+  onCodewarLevelChanged: PropTypes.string.isRequired,
+  onSubmit: PropTypes.string.isRequired
 }
 const styles = {
 

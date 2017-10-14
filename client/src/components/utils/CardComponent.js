@@ -1,9 +1,13 @@
 import React from 'react'
 import injectSheet from 'react-jss'
-import Card, {CardContent} from 'material-ui/Card'
+import Card, {CardContent, CardActions} from 'material-ui/Card'
+import FavoriteIcon from 'material-ui-icons/Favorite'
 
 const styles = {
-
+  cardHeader: {
+  },
+  cardContent: {
+  }
 }
 
 const enhancer = injectSheet(styles)
