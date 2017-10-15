@@ -28,7 +28,7 @@ const styles = {
     margin: 50
   },
   jobTitle: {
-    backgroundColor: 'gray'
+    color: 'gray'
   },
   media: {
     height: 200
