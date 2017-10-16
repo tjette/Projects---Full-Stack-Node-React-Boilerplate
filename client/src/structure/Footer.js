@@ -1,4 +1,7 @@
 import React from 'react'
+import TwitterIcon from 'mdi-react/TwitterIcon'
+import FacebookIcon from 'mdi-react/FacebookIcon'
+import InstagramIcon from 'mdi-react/InstagramIcon'
 
 const styles = {
   footer: {
@@ -22,9 +25,9 @@ const Footer = () => {
   return (
     <div>
       <footer style={styles.footer}>
-        <h3>Social Media</h3>
-        <h3>About Us</h3>
-        <h3>Jobs</h3>
+        <TwitterIcon />
+        <FacebookIcon />
+        <InstagramIcon />
         <h3>Contact</h3>
       </footer>
     </div>
