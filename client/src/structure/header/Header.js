@@ -33,10 +33,9 @@ const Header = (props) => {
         <NavItem to='/'>Home</NavItem>
         <NavItem to='/about'>About</NavItem>
         {props.userData.user ? <NavItem to='/jobs'>Jobs</NavItem> : null }
+        { props.userData.user ? <NavItem to='/profile'>Profile</NavItem> : <NavItem to='/login'>Login</NavItem>}
         { !props.userData.user ? <NavItem to='/signup'>Sign Up</NavItem> : <a href='/' onClick={props.userData.logoutUser}>Log Out</a> }
-        { props.userData.user ? <NavItem to='/profile'>Profile</NavItem>
-          : <NavItem to='/login'>Login</NavItem>
-        }
+
       </nav>
     </header>
   )
