@@ -23,15 +23,16 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     background: 'url(https://s3-us-west-1.amazonaws.com/prosky/careerbuzz/articles/image_prevs/000/000/334/normal/t6njoebtarec-lee-campbell.jpg?1491887042) no-repeat',
+    '&:hover': {
+      opacity: 0.7
+    },
+    backgroundSize: 'cover',
     jobSeekerItems: {
       height: '100%',
       width: '100%',
       display: 'flex',
       justifyContent: 'center',
-      alignItems: 'center',
-      '&:hover': {
-        opacity: 0.7
-      }
+      alignItems: 'center'
     }
   },
   employerContainer: {
@@ -41,15 +42,17 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     background: 'url(https://resumer.io/images/blog/hiring.jpg) no-repeat',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    '&:hover': {
+      opacity: 0.7
+    },
     employerItems: {
       height: '100%',
       width: '100%',
       display: 'flex',
       justifyContent: 'center',
-      alignItems: 'center',
-      '&:hover': {
-        opacity: 0.7
-      }
+      alignItems: 'center'
     }
 
   },
@@ -59,15 +62,16 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     background: 'url(http://www.bizmagsb.com/wp-content/uploads/2015/10/tech.jpg) no-repeat',
+    backgroundSize: 'cover',
+    '&:hover': {
+      opacity: 0.7
+    },
     jobItems: {
       height: '100%',
       width: '100%',
       display: 'flex',
       justifyContent: 'center',
-      alignItems: 'center',
-      '&:hover': {
-        opacity: 0.7
-      }
+      alignItems: 'center'
     }
   },
   link: {
