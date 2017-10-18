@@ -19,7 +19,8 @@ const styles = {
   },
   jobContainer: {
     display: 'flex',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    flexWrap: 'wrap'
   },
   header: {
     paddingTop: 50,
