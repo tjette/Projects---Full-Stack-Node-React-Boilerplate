@@ -94,10 +94,10 @@ const enhancer = compose(
 const Home = (props) => {
   return (
     <div className={props.classes.container}>
-      <div className={props.classes.jobSeekerContainer} onClick={() => props.history.push('/signup/job-seeker')}>
+      <div className={props.classes.jobSeekerContainer} onClick={() => props.history.push('/signup')}>
         <Button raised className={props.classes.jobSeekerContainer.jobSeekerItems}>Job Seeker</Button>
       </div>
-      <div className={props.classes.employerContainer} onClick={() => props.history.push('/signup/employer')}>
+      <div className={props.classes.employerContainer} onClick={() => props.history.push('/employerSignup')}>
         <Button raised className={props.classes.employerContainer.employerItems}>Employer</Button>
       </div>
       <div className={props.classes.jobContainer} onClick={() => props.history.push('/jobs')}>

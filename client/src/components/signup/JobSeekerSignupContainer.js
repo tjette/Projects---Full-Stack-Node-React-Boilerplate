@@ -5,10 +5,8 @@ import PropTypes from 'prop-types'
 import SignupJobSeekerPart1 from './SignupJobSeekerPart1'
 import SignupJobSeekerPart2 from './SignupJobSeekerPart2'
 import SignupJobSeekerPart3 from './SignupJobSeekerPart3'
-import SignupEmployerPart1 from './SignupEmployerPart1'
-import SignupChooser from './SignupChooser'
 
-class SignupContainer extends Component {
+class JobSeekerSignupContainer extends Component {
   static propTypes = {
     userData: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
@@ -20,8 +18,7 @@ class SignupContainer extends Component {
       firstName: '',
       lastName: '',
       email: '',
-      password: '',
-      isEmployer: false
+      password: ''
     },
     part2: {
       codeWarsToken: '',
@@ -79,13 +76,14 @@ class SignupContainer extends Component {
       resumeUrl: event.target.value
     }
   })
+
   onSubmitJobSeekerPart1 = (event) => {
     console.log('Hi')
     event.preventDefault()
     this.props.userData.signUpUser(this.state.part1)
       .then(() => {
         console.log('on submit triggered')
-        this.props.history.push('/signup/job-seeker-part2')
+        this.props.history.push('/signup/part2')
       })
       .catch((error) => {
         alert(error)
@@ -97,7 +95,7 @@ class SignupContainer extends Component {
     this.props.userData.updateUserInfo(this.state.part2)
       .then(() => {
         console.log('savedCodeWarsInfo method fired')
-        this.props.history.push('/signup/job-seeker-part3')
+        this.props.history.push('/signup/part3')
       })
       .catch((error) => {
         alert(error)
@@ -115,23 +113,13 @@ class SignupContainer extends Component {
         alert(error)
       })
   }
-  onSubmitEmployerPart1 = (event) => {
-    event.preventDefault()
-    this.props.userData.signUpUser(this.state.part1)
-      .then(() => {
-        alert(`Welcome, ${this.state.firstName}`)
-        console.log('on submit triggered')
-        this.setState({isEmployer: true})
-        this.props.history.push('jobs/add')
-      })
-  }
 
   render () {
     const {match} = this.props
 
     return (
       <div>
-        <Route path={`${match.path}/job-seeker`}
+        <Route path={`${match.path}`}
           render={() =>
             <SignupJobSeekerPart1
               {...this.state.part1}
@@ -141,7 +129,7 @@ class SignupContainer extends Component {
               onPasswordChanged={this.onPasswordChanged}
               onSubmitJobSeekerPart1={this.onSubmitJobSeekerPart1}
             />} />
-        <Route exact path={`${match.path}/job-seeker-part2`}
+        <Route exact path={`${match.path}/part2`}
           render={() =>
             <SignupJobSeekerPart2
               {...this.state.part2}
@@ -149,27 +137,16 @@ class SignupContainer extends Component {
               onCodeWarsTokenChanged={this.onCodeWarsTokenChanged}
               onCodeWarsUserNameChanged={this.onCodeWarsUserNameChanged}
             />} />
-        <Route exact path={`${match.path}/job-seeker-part3`}
+        <Route exact path={`${match.path}/part3`}
           render={() =>
             <SignupJobSeekerPart3
               {...this.state.part3}
               onSubmitJobSeekerPart3={this.onSubmitJobSeekerPart3}
               onResumeUrlChanged={this.onResumeUrlChanged}
             />} />
-        <Route path={`${match.path}/employer`}
-          render={() =>
-            <SignupEmployerPart1
-              {...this.state.part1}
-              onFirstNameChanged={this.onFirstNameChanged}
-              onLastNameChanged={this.onLastNameChanged}
-              onEmailChanged={this.onEmailChanged}
-              onPasswordChanged={this.onPasswordChanged}
-              onSubmitEmployerPart1={this.onSubmitEmployerPart1}
-            />} />
-        <Route exact path={match.path} component={SignupChooser} />
       </div>
     )
   }
 }
 
-export default withRouter(withUserData(SignupContainer))
+export default withRouter(withUserData(JobSeekerSignupContainer))

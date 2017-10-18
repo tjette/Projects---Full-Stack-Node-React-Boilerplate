@@ -13,14 +13,14 @@ const propTypes = {
 const styles = {
   root: {
     top: 0,
-    left: 0,
+    left: 20,
     right: 20,
     height: 50,
     backgroundColor: 'gray',
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'left',
+    justifyContent: 'flex-end',
     fontFamily: 'Gloria Hallelujah',
     color: 'black'
   }

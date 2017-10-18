@@ -15,7 +15,13 @@ Router.route('/')
   })
   .post((req, res) => {
     const job = new Job()
-    job.loadData(req.body)
+    job.companyName = req.body.companyName
+    job.jobTitle = req.body.jobTitle
+    job.jobDescription = req.body.jobDescription
+    job.codeWarsLevel = req.body.codeWarsLevel
+    job.categories = req.body.categories
+    job.dateCreated = req.body.dateCreated
+    job.applyBy = req.body.applyBy
     job.save((err, savedJob) => {
       console.log(err)
       console.log(savedJob)

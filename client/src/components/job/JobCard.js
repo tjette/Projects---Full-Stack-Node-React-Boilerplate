@@ -47,14 +47,17 @@ const styles = {
 const enhancer = injectSheet(styles)
 
 const JobCard = ({classes, onDelete, onEdit, userData, job}) => {
-  const {jobTitle, companyName, jobDescription, codeWarLevel} = job
+  const {jobTitle, categories, applyBy, dateCreated, companyName, jobDescription, codeWarsLevel} = job
   return (
     <div className={classes.jobCard}>
       <CardComponent>
         <LabeledValue className={classes.jobTitle} label='Job Title'>{jobTitle}</LabeledValue>
         <LabeledValue label='Company Name'>{companyName}</LabeledValue>
-        <LabeledValue label='Codewar Level'>{codeWarLevel}</LabeledValue>
+        <LabeledValue label='Codewars Level'>{codeWarsLevel}</LabeledValue>
         <LabeledValue label='Job Description'>{jobDescription}</LabeledValue>
+        <LabeledValue label='Job Category'>{categories}</LabeledValue>
+        <LabeledValue label='Date Created'>{dateCreated}</LabeledValue>
+        <LabeledValue label='Apply By'>{applyBy}</LabeledValue>
         <CardActions>
           {userData.user.local.isAdmin && userData.loggedIn ? <Button dense color='primary' onClick={onDelete}>Delete Product</Button> : null }
           {userData.user.local.isAdmin && userData.loggedIn ? <Button dnese color='primary' onClick={onEdit}>Edit</Button> : null }

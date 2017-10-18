@@ -3,11 +3,12 @@ import {Route} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import injectSheet from 'react-jss'
 import Home from '../components/Home'
-import SignupContainer from '../components/signup/SignupContainer'
-import SignupEmployerPart1 from '../components/signup/SignupEmployerPart1'
+
+import JobSeekerSignupContainer from '../components/signup/JobSeekerSignupContainer'
 import LoginContainer from '../components/auth/LoginContainer'
 import Jobs from '../components/job/Jobs'
 import ProfileContainer from '../components/profile/ProfileContainer'
+import EmployerSignupContainer from '../components/signup/EmployerSignupContainer'
 
 const propTypes = {
   classes: PropTypes.object.isRequired
@@ -29,8 +30,8 @@ const Main = (props) => {
   return (
     <div className={props.classes.main}>
       <Route path='/' exact component={Home} />
-      <Route path='/signup' render={() => <SignupContainer />} />
-      <Route path='/employerSignup' render={() => <SignupEmployerPart1 />} />
+      <Route path='/signup' render={() => <JobSeekerSignupContainer />} />
+      <Route path='/employerSignup' render={() => <EmployerSignupContainer />} />
       <Route path='/login' render={() => <LoginContainer />} />
       <Route path='/jobs' render={() => <Jobs />} />
       <Route path='/profile' render={() => <ProfileContainer />} />

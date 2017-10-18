@@ -53,7 +53,7 @@ const SignupChooser = ({match, classes}) => {
           <Button className={classes.button}><Link className={classes.link} to={`${match.url}/employer`}>Employer</Link></Button>
         </div>
         <div style={styles.headerTitle}>
-          <Button className={classes.button}><Link className={classes.link} to={`${match.url}/job-seeker`}>Job Seeker</Link></Button>
+          <Button className={classes.button}><Link className={classes.link} to={`${match.url}`}>Job Seeker</Link></Button>
         </div>
       </div>
     </div>
