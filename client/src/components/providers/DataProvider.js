@@ -30,8 +30,8 @@ class DataProvider extends Component {
       ServerApi.deleteJob(jobId)
         .then(this.methods.getAllJobs),
 
-    updateJob: (jobId) =>
-      ServerApi.updateJob(jobId)
+    updateJob: (job) =>
+      ServerApi.updateJob(job)
         .then(this.methods.getAllJobs),
 
     findJobById: (jobId) => {

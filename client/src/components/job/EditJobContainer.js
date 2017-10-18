@@ -15,13 +15,7 @@ class EditJobContainer extends Component {
     console.log(props.mainData)
     super()
     const jobId = props.match.params.jobId
-    const job = props.mainData.findJobById(jobId)
-    this.state = {
-      companyName: job.companyName,
-      jobTitle: job.jobTitle,
-      jobDescription: job.jobDescription,
-      codeWarLevel: job.codeWarLevel
-    }
+    this.state = props.mainData.findJobById(jobId)
   }
     toggleEditing = () => {
       this.setState({editing: !this.state.editing})

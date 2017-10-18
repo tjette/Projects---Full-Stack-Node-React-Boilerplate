@@ -38,6 +38,7 @@ Router.route('/:job_id')
     })
   })
   .put((req, res) => {
+    console.log('job', req.params)
     Job.findById(req.params.job_id, (err, job) => {
       console.log('job', job)
       job.companyName = req.body.companyName

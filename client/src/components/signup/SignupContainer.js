@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import {Route, withRouter} from 'react-router-dom'
-import SweetAlert from 'react-bootstrap-sweetalert'
 import withUserData from '../../components/providers/withUserData'
 import PropTypes from 'prop-types'
 import SignupJobSeekerPart1 from './SignupJobSeekerPart1'
@@ -85,9 +84,6 @@ class SignupContainer extends Component {
     event.preventDefault()
     this.props.userData.signUpUser(this.state.part1)
       .then(() => {
-        <SweetAlert success title= 'Welcome, + {this.state.part1.firstName} ' onConfirm={this.onConfirm}>
-          You clicked the button!
-          </SweetAlert>
         console.log('on submit triggered')
         this.props.history.push('/signup/job-seeker-part2')
       })

@@ -1,11 +1,13 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
 import injectSheet from 'react-jss'
 import PropTypes from 'prop-types'
 import Button from 'material-ui/Button'
+import {compose} from 'recompose'
 
 const propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired
 }
 
 const styles = {
@@ -84,19 +86,22 @@ const styles = {
   }
 }
 
-const enhancer = injectSheet(styles)
+const enhancer = compose(
+  injectSheet(styles),
+  withRouter
+)
 
 const Home = (props) => {
   return (
     <div className={props.classes.container}>
-      <div className={props.classes.jobSeekerContainer}>
-        <Button raised className={props.classes.jobSeekerContainer.jobSeekerItems}><Link className={props.classes.link} to='/signup/job-seeker'>Job Seeker</Link></Button>
+      <div className={props.classes.jobSeekerContainer} onClick={() => props.history.push('/signup/job-seeker')}>
+        <Button raised className={props.classes.jobSeekerContainer.jobSeekerItems}>Job Seeker</Button>
       </div>
-      <div className={props.classes.employerContainer}>
-        <Button raised className={props.classes.employerContainer.employerItems}><Link className={props.classes.link} to='/signup/employer'>Employer</Link></Button>
+      <div className={props.classes.employerContainer} onClick={() => props.history.push('/signup/employer')}>
+        <Button raised className={props.classes.employerContainer.employerItems}>Employer</Button>
       </div>
-      <div className={props.classes.jobContainer}>
-        <Button raised className={props.classes.jobContainer.jobItems}><Link className={props.classes.link} to='/jobs'>Jobs</Link></Button>
+      <div className={props.classes.jobContainer} onClick={() => props.history.push('/jobs')}>
+        <Button raised className={props.classes.jobContainer.jobItems}>Jobs</Button>
       </div>
     </div>
   )
