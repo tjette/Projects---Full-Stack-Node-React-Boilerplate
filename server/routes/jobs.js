@@ -23,7 +23,6 @@ Router.route('/')
     job.dateCreated = req.body.dateCreated
     job.applyBy = req.body.applyBy
     job.save((err, savedJob) => {
-      console.log(err)
       console.log(savedJob)
       if (err) {
         res.json({ message: err, data: null })

@@ -17,6 +17,10 @@ const styles = {
     backgroundColor: 'darkseagreen',
     marginTop: -21
   },
+  jobContainer: {
+    display: 'flex',
+    justifyContent: 'center'
+  },
   header: {
     paddingTop: 50,
     paddingBottom: 50
@@ -41,7 +45,7 @@ const JobList = ({classes, mainData, history}) => {
         <h1 className={classes.header}>Current Jobs</h1>
         <Button raised className={classes.button}><Link className={classes.link} to='/jobs/add'>Add Job</Link></Button>
       </div>
-      <div>
+      <div className={classes.jobContainer}>
 
         {
           mainData.jobs.length > 0

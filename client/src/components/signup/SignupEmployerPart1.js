@@ -1,15 +1,16 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
 import TextField from 'material-ui/TextField'
 import Button from 'material-ui/Button'
 import PropTypes from 'prop-types'
 import injectSheet from 'react-jss'
 
 const propTypes = {
+  companyName: PropTypes.string.isRequired,
   firstName: PropTypes.string.isRequired,
   lastName: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
+  onCompanyNameChanged: PropTypes.func.isRequired,
   onFirstNameChanged: PropTypes.func.isRequired,
   onLastNameChanged: PropTypes.func.isRequired,
   onEmailChanged: PropTypes.func.isRequired,
@@ -57,9 +58,9 @@ const SignupEmployerPart1 = (props) => {
       <h1 style={styles.header}>Employer Signup Part 1</h1>
       <form style={styles.form} onSubmit={props.onSubmitEmployerPart1}>
         <TextField style={styles.textFields}
-            label='Company Name'
-            value={props.companyName}
-            onChange={props.onCompanyNameChanged}
+          label='Company Name'
+          value={props.companyName}
+          onChange={props.onCompanyNameChanged}
         />
         <TextField style={styles.textFields}
           label='First Name'
@@ -82,7 +83,6 @@ const SignupEmployerPart1 = (props) => {
           onChange={props.onPasswordChanged}
         />
         <Button type='submit' disabled={!props.companyName || !props.firstName || !props.lastName || !props.email || !props.password} raised>Submit</Button>
-        <Link to='/signup'>Back To Signup</Link>
       </form>
     </div>
   )

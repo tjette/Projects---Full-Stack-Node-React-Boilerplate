@@ -43,11 +43,18 @@ class AddJobContainer extends Component {
       jobDescription: event.target.value
     }
   })
- 
+
   onCodewarsLevelChanged = (event) => this.setState({
     job: {
       ...this.state.job,
       codeWarsLevel: event.target.value
+    }
+  })
+
+  onApplyByChanged = (event) => this.setState({
+    job: {
+      ...this.state.job,
+      applyBy: event.target.value
     }
   })
 
@@ -63,6 +70,13 @@ class AddJobContainer extends Component {
         categories
       }
     })
+  }
+
+  deleteJobCategory = (job) => {
+    const categories = this.state.job.categories
+    const categoryToDelete = categories.indexOf(job)
+    categories.splice(categoryToDelete, 1)
+    this.setState({categories})
   }
 
   onSubmit = (event) => {
@@ -85,6 +99,7 @@ class AddJobContainer extends Component {
           onAddCategorySelect={this.onAddCategorySelect}
           jobCategories={jobCategories}
           addJobCategory={this.addJobCategory}
+          onRequestDelete={this.deleteJobCategory}
           onSubmit={this.onSubmit}
         />
       </div>

@@ -7,7 +7,7 @@ const JobSchema = new mongoose.Schema({
   codeWarsLevel: {type: Number, required: true},
   categories: {type: Array, required: true},
   dateCreated: {type: Date, default: Date.now},
-  applyBy: {type: Date, required: true}
+  applyBy: {type: String, required: true}
 })
 
 module.exports = mongoose.model('Job', JobSchema)
