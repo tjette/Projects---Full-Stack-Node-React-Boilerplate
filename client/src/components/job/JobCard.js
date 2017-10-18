@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import injectSheet from 'react-jss'
+import Moment from 'moment'
 import withUserData from '../../components/providers/withUserData'
 import {CardActions} from 'material-ui/Card'
 import Button from 'material-ui/Button'
@@ -56,8 +57,8 @@ const JobCard = ({classes, onDelete, onEdit, userData, job}) => {
         <LabeledValue label='Codewars Level'>{codeWarsLevel}</LabeledValue>
         <LabeledValue label='Job Description'>{jobDescription}</LabeledValue>
         <LabeledValue label='Job Category'>{categories}</LabeledValue>
-        <LabeledValue label='Date Created'>{dateCreated}</LabeledValue>
-        <LabeledValue label='Apply By'>{applyBy}</LabeledValue>
+        <LabeledValue label='Date Created'>{Moment(dateCreated).format('LL')}</LabeledValue>
+        <LabeledValue label='Apply By'>{Moment(applyBy).format('LL')}</LabeledValue>
         <CardActions>
           {userData.user.local.isAdmin && userData.loggedIn ? <Button dense color='primary' onClick={onDelete}>Delete Product</Button> : null }
           {userData.user.local.isAdmin && userData.loggedIn ? <Button dnese color='primary' onClick={onEdit}>Edit</Button> : null }
