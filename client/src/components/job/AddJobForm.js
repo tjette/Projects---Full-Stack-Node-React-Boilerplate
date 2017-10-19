@@ -70,8 +70,7 @@ const AddJobForm = (props) => {
         <div>
           <Select
             value={props.addCategorySelect}
-            onChange={props.onAddCategorySelect}
-          >
+            onChange={props.onAddCategorySelect}>
             <MenuItem value=''>
               Select Category
             </MenuItem>
@@ -83,12 +82,9 @@ const AddJobForm = (props) => {
             Add Category
           </Button>
           <div>
-          {
-
-              props.job.categories.length ?
+            {
                 props.job.categories.map(c => <Chip label={c} onClick={() => props.onRequestDelete(c)}>Delete Me </Chip>)
-                : null
-              }
+            }
 
           </div>
         </div>
@@ -97,13 +93,13 @@ const AddJobForm = (props) => {
           label='Apply By'
           id='date'
           type='date'
-          value={props.applyBy}
+          value={props.job.applyBy}
           onChange={props.onApplyByChanged}
           InputLabelProps={{
           shrink: true
         }}
         />
-        <Button className={props.classes.labelInput} raised type='submit'>Submit Job</Button>
+        <Button className={props.classes.labelInput} disabled={!props.job.companyName || !props.job.jobTitle || !props.job.jobDescription || !props.job.codeWarsLevel || !props.job.categories || !props.job.applyBy} raised type='submit'>Submit Job</Button>
         <Button className={props.classes.labelInput} raised><Link to='/'>Cancel</Link></Button>
       </form>
 
