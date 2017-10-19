@@ -7,6 +7,8 @@ import Button from 'material-ui/Button'
 import {Link} from 'react-router-dom'
 import {MenuItem} from 'material-ui/Menu'
 import Chip from 'material-ui/Chip'
+import AddCircle from 'material-ui-icons/AddCircle'
+import IconButton from 'material-ui/IconButton'
 
 const propTypes = {
   companyName: PropTypes.string.isRequired,
@@ -40,7 +42,7 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
     flexDirection: 'column',
-    width: '20%'
+    width: '80%'
   },
   labelInput: {
     margin: 20
@@ -49,6 +51,12 @@ const styles = {
     textAlign: 'center',
     backgroundColor: 'white',
     opacity: 0.7
+  },
+  dropdownWrapper: {
+    margin: 20,
+  },
+  dropdown: {
+    width: '50%'
   }
 }
 
@@ -60,33 +68,58 @@ const AddJobForm = (props) => {
     <div className={props.classes.container}>
       <form onSubmit={props.onSubmit} className={props.classes.form} noValidate>
         <TextField
-          className={props.classes.labelInput} label='Company' value={props.job.companyName} onChange={props.onCompanyNameChanged} />
+          className={props.classes.labelInput}
+          label='Company' value={props.job.companyName}
+          onChange={props.onCompanyNameChanged}
+        />
         <TextField
-          className={props.classes.labelInput} label='Job Title' value={props.job.jobTitle} onChange={props.onJobTitleChanged} />
+          className={props.classes.labelInput}
+          label='Job Title' value={props.job.jobTitle}
+          onChange={props.onJobTitleChanged}
+        />
         <TextField
-          className={props.classes.labelInput} label='Job Description' value={props.job.jobDescription} onChange={props.onJobDescriptionChanged} />
+          className={props.classes.labelInput}
+          label='Job Description'
+          value={props.job.jobDescription}
+          onChange={props.onJobDescriptionChanged}
+        />
         <TextField
-          className={props.classes.labelInput} label='Codewars Level' value={props.job.codeWarsLevel} onChange={props.onCodewarsLevelChanged} />
+          className={props.classes.labelInput}
+          label='Codewars Level'
+          value={props.job.codeWarsLevel}
+          onChange={props.onCodewarsLevelChanged}
+        />
+        <div className={props.classes.dropdownWrapper}>
           <Select
+            className={props.classes.dropdown}
             value={props.addCategorySelect}
-            onChange={props.onAddCategorySelect}>
-            <MenuItem value='none'>
+            onChange={props.onAddCategorySelect}
+          >
+            <MenuItem value=''>
               Select Category
             </MenuItem>
             {
-              props.jobCategories.filter((cat) => {
-                return !props.job.categories.includes(cat)
-              }).map(c => <MenuItem value={c}>{c}</MenuItem>)
+              props.jobCategories
+                .filter(c => !props.job.categories.includes(c))
+                .map(c => <MenuItem value={c}>{c}</MenuItem>)
             }
           </Select>
-          <Button raised className={props.classes.labelInput} onClick={props.addJobCategory}>
-            Add Category
-          </Button>
+          <IconButton
+            className={props.classes.labelInput}
+            onClick={props.addJobCategory}
+            disabled={!props.addCategorySelect}
+          >
+            <AddCircle />
+          </IconButton>
           <div>
             {
-              props.job.categories.map(c => <Chip label={c} onClick={() => props.onRequestDelete(c)}>Delete Me </Chip>)
+              props.job.categories.map(
+                c =>
+                  <Chip label={c} onRequestDelete={() => props.onDeleteCategory(c)}>
+                    Delete Me
+                  </Chip>
+              )
             }
-
           </div>
         <TextField
           className={props.classes.labelInput}
@@ -95,12 +128,21 @@ const AddJobForm = (props) => {
           type='date'
           value={props.job.applyBy}
           onChange={props.onApplyByChanged}
-          InputLabelProps={{
-          shrink: true
-        }}
+          InputLabelProps={{shrink: true}}
         />
-        <Button className={props.classes.labelInput} disabled={!props.job.companyName || !props.job.jobTitle || !props.job.jobDescription || !props.job.codeWarsLevel || !props.job.categories || !props.job.applyBy} raised type='submit'>Submit Job</Button>
-        <Button className={props.classes.labelInput} raised><Link to='/'>Cancel</Link></Button>
+        <Button
+          className={props.classes.labelInput}
+          disabled={!props.job.companyName || !props.job.jobTitle || !props.job.jobDescription || !props.job.codeWarsLevel || !props.job.categories || !props.job.applyBy}
+          raised type='submit'
+        >
+          Submit Job
+        </Button>
+        <Button
+          className={props.classes.labelInput}
+          raised
+        >
+          <Link to='/'>Cancel</Link>
+        </Button>
       </form>
 
     </div>
