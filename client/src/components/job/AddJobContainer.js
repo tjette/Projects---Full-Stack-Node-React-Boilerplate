@@ -75,7 +75,7 @@ class AddJobContainer extends Component {
     })
   }
 
-  deleteJobCategory = (job) => {
+  onDeleteCategory = (job) => {
     const categories = this.state.job.categories
     const categoryToDelete = categories.indexOf(job)
     categories.splice(categoryToDelete, 1)
@@ -102,7 +102,7 @@ class AddJobContainer extends Component {
           onAddCategorySelect={this.onAddCategorySelect}
           jobCategories={jobCategories}
           addJobCategory={this.addJobCategory}
-          onRequestDelete={this.deleteJobCategory}
+          onDeleteCategory={this.onDeleteCategory}
           onSubmit={this.onSubmit}
         />
       </div>

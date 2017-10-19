@@ -7,6 +7,8 @@ import Button from 'material-ui/Button'
 import {Link} from 'react-router-dom'
 import {MenuItem} from 'material-ui/Menu'
 import Chip from 'material-ui/Chip'
+import AddCircle from 'material-ui-icons/AddCircle'
+import IconButton from 'material-ui/IconButton'
 
 const propTypes = {
   companyName: PropTypes.string.isRequired,
@@ -40,7 +42,7 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
     flexDirection: 'column',
-    width: '20%'
+    width: '80%'
   },
   labelInput: {
     margin: 20
@@ -49,6 +51,12 @@ const styles = {
     textAlign: 'center',
     backgroundColor: 'white',
     opacity: 0.7
+  },
+  dropdownWrapper: {
+    margin: 20,
+  },
+  dropdown: {
+    width: '50%'
   }
 }
 
@@ -81,28 +89,37 @@ const AddJobForm = (props) => {
           value={props.job.codeWarsLevel}
           onChange={props.onCodewarsLevelChanged}
         />
-        <div>
+        <div className={props.classes.dropdownWrapper}>
           <Select
+            className={props.classes.dropdown}
             value={props.addCategorySelect}
             onChange={props.onAddCategorySelect}
           >
-            <MenuItem value='none'>
+            <MenuItem value=''>
               Select Category
             </MenuItem>
             {
-              props.jobCategories.filter((cat) => {
-                return !props.job.categories.includes(cat)
-              }).map(c => <MenuItem value={c}>{c}</MenuItem>)
+              props.jobCategories
+                .filter(c => !props.job.categories.includes(c))
+                .map(c => <MenuItem value={c}>{c}</MenuItem>)
             }
           </Select>
-          <Button raised className={props.classes.labelInput} onClick={props.addJobCategory}>
-            Add Category
-          </Button>
+          <IconButton 
+            className={props.classes.labelInput} 
+            onClick={props.addJobCategory}
+            disabled={!props.addCategorySelect}
+          >
+            <AddCircle />
+          </IconButton>
           <div>
             {
-              props.job.categories.map(c => <Chip label={c} onClick={() => props.onRequestDelete(c)}>Delete Me </Chip>)
+              props.job.categories.map(
+                c => 
+                  <Chip label={c} onRequestDelete={() => props.onDeleteCategory(c)}>
+                    Delete Me
+                  </Chip>
+              )
             }
-
           </div>
         </div>
         <TextField
