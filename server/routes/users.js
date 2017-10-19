@@ -22,4 +22,18 @@ Router.route('/:user_id')
     })
   })
 
+Router.route('/:user_id/jobs')
+  .get((req, res, next) => {
+    User.findById(req.params.user_id).populate('jobsCreated').exec((err, user) => {
+      if (err) {
+        next(err)
+        return
+      }
+      res.json({
+        message: 'Received users jobs',
+        data: user.jobsCreated
+      })
+    })
+  })
+
 module.exports = Router

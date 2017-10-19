@@ -121,6 +121,7 @@ const AddJobForm = (props) => {
               )
             }
           </div>
+        </div>
         <TextField
           className={props.classes.labelInput}
           label='Apply By'

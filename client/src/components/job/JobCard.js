@@ -60,7 +60,7 @@ const JobCard = ({classes, onDelete, onEdit, userData, job}) => {
         <LabeledValue label='Date Created'>{Moment(dateCreated).format('LL')}</LabeledValue>
         <LabeledValue label='Apply By'>{Moment(applyBy).format('LL')}</LabeledValue>
         <CardActions>
-          {userData.user.local.isAdmin && userData.loggedIn ? <Button dense color='primary' onClick={onDelete}>Delete Product</Button> : null }
+          {userData.user.local.isAdmin && userData.loggedIn ? <Button dense color='primary' onClick={onDelete}>Delete</Button> : null }
           {userData.user.local.isAdmin && userData.loggedIn ? <Button dense color='primary' onClick={onEdit}>Edit</Button> : null }
         </CardActions>
         <IconButton>

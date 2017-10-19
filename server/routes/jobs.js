@@ -22,6 +22,7 @@ Router.route('/')
     job.categories = req.body.categories
     job.dateCreated = req.body.dateCreated
     job.applyBy = req.body.applyBy
+    job.owner = req.user._id
     job.save((err, savedJob) => {
       console.log(savedJob)
       if (err) {
