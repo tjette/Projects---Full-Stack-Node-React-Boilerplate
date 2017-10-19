@@ -60,17 +60,32 @@ const AddJobForm = (props) => {
     <div className={props.classes.container}>
       <form onSubmit={props.onSubmit} className={props.classes.form} noValidate>
         <TextField
-          className={props.classes.labelInput} label='Company' value={props.job.companyName} onChange={props.onCompanyNameChanged} />
+          className={props.classes.labelInput}
+          label='Company' value={props.job.companyName}
+          onChange={props.onCompanyNameChanged}
+        />
         <TextField
-          className={props.classes.labelInput} label='Job Title' value={props.job.jobTitle} onChange={props.onJobTitleChanged} />
+          className={props.classes.labelInput}
+          label='Job Title' value={props.job.jobTitle}
+          onChange={props.onJobTitleChanged}
+        />
         <TextField
-          className={props.classes.labelInput} label='Job Description' value={props.job.jobDescription} onChange={props.onJobDescriptionChanged} />
+          className={props.classes.labelInput}
+          label='Job Description'
+          value={props.job.jobDescription}
+          onChange={props.onJobDescriptionChanged}
+        />
         <TextField
-          className={props.classes.labelInput} label='Codewars Level' value={props.job.codeWarsLevel} onChange={props.onCodewarsLevelChanged} />
+          className={props.classes.labelInput}
+          label='Codewars Level'
+          value={props.job.codeWarsLevel}
+          onChange={props.onCodewarsLevelChanged}
+        />
         <div>
           <Select
             value={props.addCategorySelect}
-            onChange={props.onAddCategorySelect}>
+            onChange={props.onAddCategorySelect}
+          >
             <MenuItem value='none'>
               Select Category
             </MenuItem>
@@ -97,12 +112,21 @@ const AddJobForm = (props) => {
           type='date'
           value={props.job.applyBy}
           onChange={props.onApplyByChanged}
-          InputLabelProps={{
-          shrink: true
-        }}
+          InputLabelProps={{shrink: true}}
         />
-        <Button className={props.classes.labelInput} disabled={!props.job.companyName || !props.job.jobTitle || !props.job.jobDescription || !props.job.codeWarsLevel || !props.job.categories || !props.job.applyBy} raised type='submit'>Submit Job</Button>
-        <Button className={props.classes.labelInput} raised><Link to='/'>Cancel</Link></Button>
+        <Button
+          className={props.classes.labelInput}
+          disabled={!props.job.companyName || !props.job.jobTitle || !props.job.jobDescription || !props.job.codeWarsLevel || !props.job.categories || !props.job.applyBy}
+          raised type='submit'
+        >
+          Submit Job
+        </Button>
+        <Button
+          className={props.classes.labelInput}
+          raised
+        >
+          <Link to='/'>Cancel</Link>
+        </Button>
       </form>
 
     </div>
