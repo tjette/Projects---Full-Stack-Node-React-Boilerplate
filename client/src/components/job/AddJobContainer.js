@@ -20,7 +20,8 @@ class AddJobContainer extends Component {
       categories: [],
       applyBy: ''
     },
-    addCategorySelect: ''
+    addCategorySelect: '',
+    selectedCategory: 'none'
   }
 
   onCompanyNameChanged = (event) => this.setState({

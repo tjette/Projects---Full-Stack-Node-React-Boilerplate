@@ -71,7 +71,7 @@ const AddJobForm = (props) => {
           <Select
             value={props.addCategorySelect}
             onChange={props.onAddCategorySelect}>
-            <MenuItem value=''>
+            <MenuItem value='none'>
               Select Category
             </MenuItem>
             {
