@@ -75,7 +75,9 @@ const AddJobForm = (props) => {
               Select Category
             </MenuItem>
             {
-              props.jobCategories.map(c => <MenuItem value={c}>{c}</MenuItem>)
+              props.jobCategories.filter((cat) => {
+                return !props.job.categories.includes(cat)
+              }).map(c => <MenuItem value={c}>{c}</MenuItem>)
             }
           </Select>
           <Button raised className={props.classes.labelInput} onClick={props.addJobCategory}>
@@ -83,7 +85,7 @@ const AddJobForm = (props) => {
           </Button>
           <div>
             {
-                props.job.categories.map(c => <Chip label={c} onClick={() => props.onRequestDelete(c)}>Delete Me </Chip>)
+              props.job.categories.map(c => <Chip label={c} onClick={() => props.onRequestDelete(c)}>Delete Me </Chip>)
             }
 
           </div>
