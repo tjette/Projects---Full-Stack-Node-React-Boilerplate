@@ -67,7 +67,6 @@ const AddJobForm = (props) => {
           className={props.classes.labelInput} label='Job Description' value={props.job.jobDescription} onChange={props.onJobDescriptionChanged} />
         <TextField
           className={props.classes.labelInput} label='Codewars Level' value={props.job.codeWarsLevel} onChange={props.onCodewarsLevelChanged} />
-        <div>
           <Select
             value={props.addCategorySelect}
             onChange={props.onAddCategorySelect}>
@@ -89,7 +88,6 @@ const AddJobForm = (props) => {
             }
 
           </div>
-        </div>
         <TextField
           className={props.classes.labelInput}
           label='Apply By'
