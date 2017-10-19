@@ -58,7 +58,9 @@ class AddJobContainer extends Component {
     }
   })
 
-  onAddCategorySelect = (event) => this.setState({addCategorySelect: event.target.value})
+  onAddCategorySelect = (event) => {
+    this.setState({addCategorySelect: event.target.value})
+  }
 
   addJobCategory = (event) => {
     const categories = this.state.job.categories
