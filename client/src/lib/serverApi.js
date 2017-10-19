@@ -46,6 +46,8 @@ export const logoutUser = () => ajaxRequest({url: '/api/logout', method: 'GET'})
 
 export const getUser = () => ajaxRequest({url: '/api/get_user', method: 'GET'})
 
+export const getJobsOfUser = (job) => ajaxRequest({url: `/api/jobs/${job._id}/users`, method: 'GET'})
+
 export const updateUserInfo = (user, info) => ajaxRequest({url: `/api/users/${user._id}`, method: 'PUT', body: info})
 
 export const fetchCodeWarsProfile = () =>

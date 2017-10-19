@@ -20,7 +20,9 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(session({
   name: '__PROJECT__',
   secret: '111',
-  secure: false
+  secure: false,
+  resave: true,
+  saveUninitialized: true
 }))
 app.use(passport.initialize())
 app.use(passport.session()) // persistent login sessions

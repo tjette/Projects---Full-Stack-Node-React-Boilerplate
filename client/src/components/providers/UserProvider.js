@@ -57,7 +57,6 @@ class UserProvider extends Component {
       console.log('about to fetch codewars info')
       ServerApi.fetchCodeWarsProfile()
         .then(profile => {
-          console.log(profile)
           return profile
         })
         .then(profile => this.setState({user, profile}))
