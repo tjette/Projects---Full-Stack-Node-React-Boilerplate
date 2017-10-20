@@ -7,7 +7,7 @@ import Home from '../components/Home'
 import JobSeekerSignupContainer from '../components/signup/JobSeekerSignupContainer'
 import LoginContainer from '../components/auth/LoginContainer'
 import Jobs from '../components/job/Jobs'
-import ProfileContainer from '../components/profile/ProfileContainer'
+import Profile from '../components/profile/Profile'
 import EmployerSignupContainer from '../components/signup/EmployerSignupContainer'
 
 const propTypes = {
@@ -34,7 +34,7 @@ const Main = (props) => {
       <Route path='/employerSignup' render={() => <EmployerSignupContainer />} />
       <Route path='/login' render={() => <LoginContainer />} />
       <Route path='/jobs' render={() => <Jobs />} />
-      <Route path='/profile' render={() => <ProfileContainer />} />
+      <Route path='/profile' render={() => <Profile />} />
     </div>
   )
 }

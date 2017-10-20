@@ -5,7 +5,9 @@ const propTypes = {
   label: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired
 }
-
+const defaultProps = {
+  children: ''
+}
 const LabeledValue = ({label, children}) => {
   return (
     <h3>{label}: {children}</h3>
@@ -13,5 +15,6 @@ const LabeledValue = ({label, children}) => {
 }
 
 LabeledValue.propTypes = propTypes
+LabeledValue.defaultProps = defaultProps
 
 export default LabeledValue

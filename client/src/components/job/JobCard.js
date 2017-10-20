@@ -56,7 +56,7 @@ const JobCard = ({classes, onDelete, onEdit, userData, job}) => {
         <LabeledValue label='Company Name'>{companyName}</LabeledValue>
         <LabeledValue label='Codewars Level'>{codeWarsLevel}</LabeledValue>
         <LabeledValue label='Job Description'>{jobDescription}</LabeledValue>
-        <LabeledValue label='Job Category'>{categories}</LabeledValue>
+        <LabeledValue label='Job Category'>{categories.join(', ')}</LabeledValue>
         <LabeledValue label='Date Created'>{Moment(dateCreated).format('LL')}</LabeledValue>
         <LabeledValue label='Apply By'>{Moment(applyBy).format('LL')}</LabeledValue>
         <CardActions>

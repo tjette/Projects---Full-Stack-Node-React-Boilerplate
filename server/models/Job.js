@@ -8,7 +8,7 @@ const JobSchema = new mongoose.Schema({
   categories: {type: Array, required: true},
   dateCreated: {type: Date, default: Date.now},
   applyBy: {type: String, required: true},
-  owner: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
+  owner: {type: mongoose.Schema.Types.ObjectId}
 })
 
 module.exports = mongoose.model('Job', JobSchema)

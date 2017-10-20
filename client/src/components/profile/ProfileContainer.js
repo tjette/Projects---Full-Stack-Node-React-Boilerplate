@@ -1,12 +1,11 @@
 import React, {Component} from 'react'
 import Profile from './Profile'
-import withUserData from '../../components/providers/withUserData'
+import withUserData from '../providers/withUserData'
 
 class ProfileContainer extends Component {
   render () {
     return (
-      <Profile
-      />
+      <Profile />
     )
   }
 }

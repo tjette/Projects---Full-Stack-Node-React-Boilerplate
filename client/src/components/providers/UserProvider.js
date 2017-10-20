@@ -81,7 +81,7 @@ class UserProvider extends Component {
     }
   }
   render () {
-    console.log('Loading boolean:',this.state.loading)
+    console.log('Loading boolean:', this.state.loading)
     return !this.state.loading ? this.props.children : null
   }
 }

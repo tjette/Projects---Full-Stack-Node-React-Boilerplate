@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import withUserData from '../providers/withUserData'
 import injectSheet from 'react-jss'
+import {compose} from 'recompose'
 import LabeledValue from '../utils/LabeledValue'
 import CardComponent from '../utils/CardComponent'
 
@@ -45,10 +46,17 @@ const styles = {
     flexDirection: 'column'
   }
 }
-const enhancer = injectSheet(styles)
+const enhancer = compose(
+  injectSheet(styles),
+  withUserData
+)
 
 const Profile = ({classes, userData: {user, profile}}) => {
+  if (!user) {
+    return null
+  }
   const {firstName, lastName, email, resumeUrl} = user.local
+
   return (
     <div>
       <div className={classes.header}>
@@ -79,4 +87,4 @@ const Profile = ({classes, userData: {user, profile}}) => {
 
 Profile.propTypes = propTypes
 
-export default enhancer(withUserData(Profile))
+export default enhancer(Profile)

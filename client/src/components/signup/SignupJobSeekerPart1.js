@@ -71,7 +71,7 @@ const SignupJobSeekerPart1 = (props) => {
         <div className='button-container' style={styles.buttonContainer}>
           <Button raised type='submit'
             disabled={!props.firstName || !props.lastName || !props.email || !props.password}>Submit</Button>
-          <Link style={styles.link} to='/signup'>Back To Signup</Link>
+          <Link style={styles.link} to='/'>Back To Home</Link>
         </div>
       </form>
     </div>
