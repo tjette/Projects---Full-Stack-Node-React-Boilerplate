@@ -5,10 +5,7 @@ import Card, {CardContent, CardActions} from 'material-ui/Card'
 import FavoriteIcon from 'material-ui-icons/Favorite'
 
 const propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number
-  ]),
+  children: PropTypes.node.isRequired,
   classes: PropTypes.object.isRequired
 }
 
@@ -17,7 +14,7 @@ const styles = {
 
 const enhancer = injectSheet(styles)
 
-const CardComponent = ({children, ...props}) =>
+const CardComponent = ({children, sheet, ...props}) => // eslint-disable-line no-unused-vars
   <Card {...props}>
     <CardContent>
       {children}

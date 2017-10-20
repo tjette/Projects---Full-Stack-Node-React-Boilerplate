@@ -24,7 +24,8 @@ const styles = {
     flexDirection: 'column'
   },
   accessTokenField: {
-    marginBottom: '50'
+    marginBottom: '50',
+    width: '50%'
   },
   button: {
     margin: '10px'
@@ -57,8 +58,7 @@ const SignupJobSeekerPart2 = ({classes, onSubmitJobSeekerPart2, onCodeWarsTokenC
         <div>
           <Button type='submit' className={classes.button} raised>Submit</Button>
           <Link className={classes.link} to='/'><Button className={classes.button} raised>Go Back Home</Button></Link>
-          <Link className={classes.link} to='/signup/job-seeker'><Button className={classes.button} raised>Go Back To Part 1</Button></Link>
-          <Link className={classes.link} to='/signup/job-seeker-part3'><Button className={classes.button} raised>Skip This Step</Button></Link>
+          <Link className={classes.link} to='/signup/part3'><Button className={classes.button} raised>Skip This Step</Button></Link>
         </div>
       </form>
     </div>

@@ -70,8 +70,6 @@ const Profile = ({classes, userData: {user, profile}}) => {
             <LabeledValue label='Rank and Name'>{profile.ranks.languages.javascript['name']}</LabeledValue>
             <LabeledValue label='Codewars Honor Level'>{profile.honor}</LabeledValue>
             <LabeledValue label='Codewars Leader Board Position'>{profile.leaderboardPosition}</LabeledValue>
-            <LabeledValue label='Codewars Leader Board Position'>{profile.leaderboardPosition}</LabeledValue>
-
           </div> : null
         }
       </div>

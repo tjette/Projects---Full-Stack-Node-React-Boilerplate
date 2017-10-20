@@ -12,7 +12,8 @@ class UserProvider extends Component {
 
   state = {
     user: null,
-    profile: null
+    profile: null,
+    loading: true
   }
 
   handleServerApiError = err => {
@@ -66,6 +67,7 @@ class UserProvider extends Component {
 
   componentDidMount () {
     this.methods.getUser()
+      .then(() => this.setState({loading: false}))
   }
 
   getChildContext () {
@@ -79,7 +81,8 @@ class UserProvider extends Component {
     }
   }
   render () {
-    return this.props.children
+    console.log('Loading boolean:',this.state.loading)
+    return !this.state.loading ? this.props.children : null
   }
 }
 

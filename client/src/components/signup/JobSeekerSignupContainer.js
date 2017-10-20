@@ -119,7 +119,7 @@ class JobSeekerSignupContainer extends Component {
 
     return (
       <div>
-        <Route path={`${match.path}`}
+        <Route exact path={`${match.path}`}
           render={() =>
             <SignupJobSeekerPart1
               {...this.state.part1}

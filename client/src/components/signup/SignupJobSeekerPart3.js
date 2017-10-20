@@ -38,7 +38,7 @@ const SignupJobSeekerPart3 = ({classes, onSubmitJobSeekerPart3, onResumeUrlChang
           onChange={onResumeUrlChanged}
         />
         <Button type='submit' className={classes.button} raised>Submit</Button>
-        <Button><Link to='/signup/jobSeekerpart2'>Go Back To Part 2</Link></Button>
+        <Button><Link to='/signup/part2'>Go Back To Part 2</Link></Button>
         <Button><Link to='/'>Skip resume upload. Finish Signup Process</Link></Button>
         <Button><Link to='/'>Cancel Signup</Link></Button>
       </form>
