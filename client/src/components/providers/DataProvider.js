@@ -21,6 +21,9 @@ class DataProvider extends Component {
           this.setState({
             jobs
           })),
+    getJobsOfUser: (jobs) =>
+      ServerApi.getJobsOfUser(jobs)
+        .then(this.methods.getAllJobs),
 
     addJob: (newJob) =>
       ServerApi.addJob(newJob)

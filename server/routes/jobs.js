@@ -14,7 +14,7 @@ Router.route('/')
     })
   })
   .post((req, res, next) => {
-    const {user} = req
+    // const {user} = req
     const job = new Job()
     job.companyName = req.body.companyName
     job.jobTitle = req.body.jobTitle
@@ -31,7 +31,6 @@ Router.route('/')
 
       console.log(savedJob)
       res.json({ message: `Successfully created new job: ${savedJob.jobTitle}`, data: savedJob })
-      
     })
   })
 
