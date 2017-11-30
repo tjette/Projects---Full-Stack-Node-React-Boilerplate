@@ -26,24 +26,24 @@ const styles = {
     display: 'flex'
   },
   profileHeader: {
-
+    textAlign: 'center',
+    borderBottom: 'solid'
   },
   profileCard: {
     display: 'flex',
     justifyContent: 'flex-start',
     flexDirection: 'column',
-    marginRight: 300,
-    width: 300,
-    border: {
-      color: 'black',
-      width: 3,
-      style: 'solid'
-    }
+    margin: '10px 200px 10px 10px'
   },
   codeWarsCard: {
     display: 'flex',
     justifyContent: 'flex-start',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    margin: '10px 10px 10px 10px'
+  },
+  codeWarsHeader: {
+    textAlign: 'center',
+    borderBottom: 'solid'
   }
 }
 const enhancer = compose(
@@ -64,20 +64,22 @@ const Profile = ({classes, userData: {user, profile}}) => {
       </div>
       <div className={classes.flexContainer}>
         <CardComponent className={classes.profileCard}>
-          <h1>Profile</h1>
+          <h1 className={classes.profileHeader}>Profile</h1>
           <LabeledValue label='First Name'>{firstName}</LabeledValue>
           <LabeledValue label='Last Name'>{lastName}</LabeledValue>
           <LabeledValue label='Email'>{email}</LabeledValue>
           <LabeledValue label='Resume Url'>{resumeUrl}</LabeledValue>
         </CardComponent>
         { profile ?
-          <div className={classes.codeWarsCard}>
-            <h1>CODE WARS</h1>
-            <LabeledValue label='Codewars Username'>{profile.username}</LabeledValue>
-            <LabeledValue label='Total Code Challenges Completed'>{profile.codeChallenges.totalCompleted}</LabeledValue>
-            <LabeledValue label='Rank and Name'>{profile.ranks.languages.javascript['name']}</LabeledValue>
-            <LabeledValue label='Codewars Honor Level'>{profile.honor}</LabeledValue>
-            <LabeledValue label='Codewars Leader Board Position'>{profile.leaderboardPosition}</LabeledValue>
+          <div className={classes.flexContainer}>
+            <CardComponent className={classes.codeWarsCard}>
+              <h1 className={classes.codeWarsHeader}>CODE WARS</h1>
+              <LabeledValue label='Codewars Username'>{profile.username}</LabeledValue>
+              <LabeledValue label='Total Code Challenges Completed'>{profile.codeChallenges.totalCompleted}</LabeledValue>
+              <LabeledValue label='Rank and Name'>{profile.ranks.languages.javascript['name']}</LabeledValue>
+              <LabeledValue label='Codewars Honor Level'>{profile.honor}</LabeledValue>
+              <LabeledValue label='Codewars Leader Board Position'>{profile.leaderboardPosition}</LabeledValue>
+            </CardComponent>
           </div> : null
         }
       </div>

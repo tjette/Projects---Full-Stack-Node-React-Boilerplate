@@ -28,8 +28,11 @@ const styles = {
     width: 350,
     margin: 50
   },
+  jobInputs: {
+    textAlign: 'center'
+  },
   jobTitle: {
-    color: 'gray'
+    backgroundColor: 'gray'
   },
   media: {
     height: 200
@@ -51,8 +54,8 @@ const JobCard = ({classes, onDelete, onEdit, userData, job}) => {
   const {jobTitle, categories, applyBy, dateCreated, companyName, jobDescription, codeWarsLevel} = job
   return (
     <div className={classes.jobCard}>
-      <CardComponent>
-        <LabeledValue className={classes.jobTitle} label='Job Title'>{jobTitle}</LabeledValue>
+      <CardComponent className={classes.jobInputs}>
+        <LabeledValue label='Job Title'>{jobTitle}</LabeledValue>
         <LabeledValue label='Company Name'>{companyName}</LabeledValue>
         <LabeledValue label='Codewars Level'>{codeWarsLevel}</LabeledValue>
         <LabeledValue label='Job Description'>{jobDescription}</LabeledValue>
