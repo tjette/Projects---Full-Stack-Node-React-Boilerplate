@@ -48,6 +48,8 @@ export const getUser = () => ajaxRequest({url: '/api/get_user', method: 'GET'})
 
 export const updateUserInfo = (user, info) => ajaxRequest({url: `/api/users/${user._id}`, method: 'PUT', body: info})
 
+export const getJobsPosted = (user) => ajaxRequest({url: `/api/users/${user._id}/jobs`, method: 'GET'})
+
 export const fetchCodeWarsProfile = () =>
   ajaxRequest({
     url: '/api/codewars', method: 'GET'

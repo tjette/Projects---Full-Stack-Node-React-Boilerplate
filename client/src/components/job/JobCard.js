@@ -7,7 +7,6 @@ import {CardActions} from 'material-ui/Card'
 import Button from 'material-ui/Button'
 import FavoriteIcon from 'material-ui-icons/Favorite'
 import IconButton from 'material-ui/IconButton'
-import ExpandMoreIcon from 'material-ui-icons/ExpandMore'
 import CardComponent from '../utils/CardComponent'
 import LabeledValue from '../utils/LabeledValue'
 

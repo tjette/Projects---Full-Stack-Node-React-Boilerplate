@@ -49,7 +49,8 @@ class UserProvider extends Component {
     if (!user) {
       this.setState({
         user: null,
-        profile: null
+        profile: null,
+        jobsPosted: null
       })
     } else if (!user.local.codeWarsToken || !user.local.codeWarsUserName) {
       console.log('no codewars info found')

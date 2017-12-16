@@ -24,7 +24,7 @@ Router.route('/:user_id')
 
 Router.route('/:user_id/jobs')
   .get((req, res, next) => {
-    User.findById(req.params.user_id).populate('owner').exec((err, user) => {
+    User.findById(req.params.user_id).populate('jobs').exec((err, user) => {
       console.log(user)
       if (err) {
         next(err)
@@ -32,7 +32,7 @@ Router.route('/:user_id/jobs')
       }
       res.json({
         message: 'Received users jobs',
-        data: user.jobsCreated
+        data: user
       })
     })
   })

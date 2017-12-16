@@ -10,7 +10,9 @@ const UserSchema = new mongoose.Schema({
     codeWarsToken: String,
     codeWarsUserName: String,
     resumeUrl: String
-  }
+  },
+  jobsCreated: [{type: mongoose.Schema.Types.ObjectId, ref: 'Job'}],
+  jobsApplied: [{type: mongoose.Schema.Types.ObjectId, ref: 'Job'}]
 })
 
 UserSchema.methods.setMetaDates = function () {

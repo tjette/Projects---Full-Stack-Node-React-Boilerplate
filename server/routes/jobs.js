@@ -72,19 +72,19 @@ Router.route('/:job_id')
     })
 })
 
-// Router.route('/:job_id/users')
-//   .get((req, res, next) => {
-//     Job.findById(req.params.job_id).populate('owner').exec((err, job) => {
-//       if (err) {
-//         next(err)
-//         return
-//       } else {
-//         res.json({
-//           message: 'Found job by user',
-//           data: job
-//         })
-//       }
-//     })
-//   })
+Router.route('/:job_id/users')
+  .get((req, res, next) => {
+    Job.findById(req.params.job_id).populate('owner').exec((err, job) => {
+      if (err) {
+        next(err)
+        return
+      } else {
+        res.json({
+          message: 'Found job by user',
+          data: job
+        })
+      }
+    })
+  })
 
 module.exports = Router

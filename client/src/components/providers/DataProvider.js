@@ -11,7 +11,8 @@ class DataProvider extends Component {
   }
 
   state = {
-    jobs: []
+    jobs: [],
+    jobsPosted: null
   }
 
   methods = {

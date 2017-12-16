@@ -82,6 +82,9 @@ const Profile = ({classes, userData: {user, profile}}) => {
             </CardComponent>
           </div> : null
         }
+        <div>
+          <h1>Jobs Posted</h1>
+        </div>
       </div>
     </div>
   )
