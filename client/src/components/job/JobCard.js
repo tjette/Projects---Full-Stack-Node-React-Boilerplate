@@ -15,7 +15,8 @@ const propTypes = {
   onDelete: PropTypes.func.isRequired,
   onEdit: PropTypes.func.isRequired,
   userData: PropTypes.object.isRequired,
-  job: PropTypes.object.isRequired
+  job: PropTypes.object.isRequired,
+  onJobView: PropTypes.func.isRequired
 }
 const styles = {
   jobCard: {
@@ -45,11 +46,15 @@ const styles = {
     '&:hover': {
       color: 'red'
     }
+  },
+  jobView: {
+    display: 'block',
+    margin: 'auto'
   }
 }
 const enhancer = injectSheet(styles)
 
-const JobCard = ({classes, onDelete, onEdit, userData, job}) => {
+const JobCard = ({classes, onDelete, onEdit, userData, job, onJobView}) => {
   const {jobTitle, categories, applyBy, dateCreated, companyName, jobDescription, codeWarsLevel} = job
   return (
     <div className={classes.jobCard}>
@@ -64,6 +69,7 @@ const JobCard = ({classes, onDelete, onEdit, userData, job}) => {
         <CardActions>
           {userData.loggedIn && userData.user.local.isAdmin ? <Button dense color='primary' onClick={onDelete}>Delete</Button> : null }
           {userData.loggedIn && userData.user.local.isAdmin ? <Button dense color='primary' onClick={onEdit}>Edit</Button> : null }
+          <Button dense color='primary' className={classes.jobView} onClick={onJobView}>View Job</Button>
         </CardActions>
         <IconButton>
           <FavoriteIcon className={classes.favoriteIcon} />

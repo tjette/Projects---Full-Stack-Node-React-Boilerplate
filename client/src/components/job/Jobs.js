@@ -3,7 +3,7 @@ import {Route} from 'react-router-dom'
 import JobContainer from './JobContainer'
 import AddJobContainer from './AddJobContainer'
 import EditJobContainer from './EditJobContainer'
-import JobView from './JobView'
+import JobViewContainer from './JobViewContainer'
 
 const Jobs = (props) => {
   return (
@@ -19,8 +19,8 @@ const Jobs = (props) => {
           />}
       />
       <Route
-        path='/jobs/jobView'
-        render={() => <JobView />}
+        path='/jobs/jobView/:jobId'
+        render={() => <JobViewContainer />}
       />
     </div>
   )

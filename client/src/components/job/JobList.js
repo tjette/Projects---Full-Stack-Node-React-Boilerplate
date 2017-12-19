@@ -46,12 +46,13 @@ const JobList = ({classes, mainData, history}) => {
         <h1 className={classes.header}>Current Jobs</h1>
         <Button raised className={classes.button}><Link className={classes.link} to='/jobs/add'>Add Job</Link></Button>
       </div>
-      <div className={classes.jobContainer} onClick={() => history.push('/jobs/jobView')}>
+      <div className={classes.jobContainer}>
 
         {
           mainData.jobs.length > 0
             ? mainData.jobs.map(job =>
               <JobCard
+                onJobView={() => history.push(`/jobs/jobView/${job._id}`)}
                 {...this.props}
                 key={job._id}
                 job={job}
